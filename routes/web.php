@@ -14,3 +14,7 @@
 Route::get('/', function () {
 	return view('register');
 });
+
+Route::get('/logs', function() {
+	return view('logs');
+});
