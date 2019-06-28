@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Guest;
 use Illuminate\Http\Request;
 
 class GuestsController extends Controller
@@ -13,7 +14,7 @@ class GuestsController extends Controller
    */
   public function index()
   {
-    return redirect('logs');
+
   }
 
   /**
@@ -23,7 +24,7 @@ class GuestsController extends Controller
    */
   public function create()
   {
-    return redirect('register');
+
   }
 
   /**
@@ -34,7 +35,19 @@ class GuestsController extends Controller
    */
   public function store(Request $request)
   {
-    
+    $guest = new Guest;
+
+    $guest->fill($request->only([
+      'last_name',
+      'first_name',
+      'middle_initial',
+      'course',
+      'college'
+    ]));
+
+    $guest->save();
+
+    return redirect('');
   }
 
   /**

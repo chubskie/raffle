@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Guest;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -11,7 +12,10 @@ class IndexController extends Controller
 	}
 
 	public function logs() {
-		return view('logs');
+		$guests = Guest::All();
+		return view('logs', [
+			'guests' => $guests
+		]);
 	}
 
 	public function login() {

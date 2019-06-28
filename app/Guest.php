@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Guests extends Model
+class Guest extends Model
 {
 	protected $fillable = [
 		'last_name',

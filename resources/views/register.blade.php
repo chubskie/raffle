@@ -24,4 +24,3 @@
 <p>After conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.</p>
 <p> IF YOU DO NOT WISH TO BE CONTACTED FURTHER AFTER THIS EVENT, KINDLY INFORM THE ORGANIZERS.</p> --}}
 @endsection
-

@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@register');
+Route::post('/', 'GuestsController@store');
 
 Route::get('/logs', 'IndexController@logs');
 

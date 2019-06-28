@@ -21,7 +21,7 @@
 							<input type="password" class="form-control validate" required>
 							<label for="password">Password</label>
 						</div>
-						<button class="btn mt-3 float-right">Sign in</button>
+						<button class="btn mt-3 float-right" type="submit">Sign in</button>
 					</form>
 				</div>
 			</div>

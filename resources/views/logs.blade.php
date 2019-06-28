@@ -28,24 +28,14 @@
 								</tr>
 							</thead>
 							<tbody>
+								@foreach($guests as $guest)
 								<tr>
-									<td>Fernandez, Jobert</td>
-									<td>BSCS</td>
-									<td>CCSS</td>
-									<td>8:30</td>
+									<td>{{ $guest->last_name }}, {{ $guest->first_name }} @if($guest->middle_initial != NULL){{ $guest->middle_initial }}@endif</td>
+									<td>{{ $guest->course }}</td>
+									<td>{{ $guest->college }}</td>
+									<td>{{ $guest->created_at }}</td>
 								</tr>
-								<tr>
-									<td>Kaye Ysabelle Dulay Rosacia</td>
-									<td>BSCS</td>
-									<td>CCSS</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Camillo claro peter Angelo Pacquing Junior</td>
-									<td>BSCS</td>
-									<td>CCSS</td>
-									<td></td>
-								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>
