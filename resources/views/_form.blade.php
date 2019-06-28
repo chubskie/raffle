@@ -1,4 +1,5 @@
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
 @endsection
 
 <form method="POST">
@@ -24,7 +25,7 @@
 		</div>
 		<div class="input-field col-md-8 pl-0">
 			<select id="college" class="w-10 validate" required>
-				<option value="" disabled selected>Select your designated college</option>
+				<option disabled selected>College</option>
 				<option value="law">College of Law</option>
 				<option value="dentistry">College of Dentistry</option>
 				<option value="cas">College of Arts and Sciences</option>
@@ -38,6 +39,10 @@
 		</div>
 	</div>
 	<div class="w-100 center-align">
-		<button class="btn-large btn-primary w-25">Submit</button>
+		<button class="btn-large btn-primary w-50" type="submit">Submit</button>
 	</div>
 </form>
+
+@section('scripts')
+
+@endsection

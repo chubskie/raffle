@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-	return view('register');
-});
+Route::get('/', 'IndexController@register');
 
-Route::get('/logs', function() {
-	return view('logs');
-});
+Route::get('/logs', 'IndexController@logs');
+
+Route::get('/login', 'IndexController@login');
