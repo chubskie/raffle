@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'IndexController@register');
-Route::post('/', 'GuestsController@store');
+Route::get('', 'IndexController@register');
+Route::post('', 'GuestsController@store');
 
-Route::get('/logs', 'IndexController@logs');
+Route::get('login', 'IndexController@login')->name('login');
+Route::post('login', 'LoginController@login');
 
-Route::get('/login', 'IndexController@login');
+Route::get('logout', 'LoginController@logout');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('logs', 'IndexController@logs');
+});

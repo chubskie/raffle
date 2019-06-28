@@ -14,13 +14,16 @@
 					<form method="POST">
 						{{ csrf_field() }}
 						<div class="input-field">
-							<input type="text" class="form-control validate" required>
+							<input type="text" class="form-control validate" name="username" required>
 							<label for="username">Username</label>
 						</div>
 						<div class="input-field mt-2">
-							<input type="password" class="form-control validate" required>
+							<input type="password" class="form-control validate" name="password" required>
 							<label for="password">Password</label>
 						</div>
+						@if($message != NULL)
+						<small>{{ $message }}</small>
+						@endif
 						<button class="btn mt-3 float-right" type="submit">Sign in</button>
 					</form>
 				</div>

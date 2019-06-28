@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Guest;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,13 @@ class IndexController extends Controller
 	}
 
 	public function login() {
-		return view('login');
+		$message = NULL;
+		if(Auth::user()) {
+			return redirect('logs');
+		} else {
+			return view('login', [
+				'message' => $message
+			]);
+		}
 	}
 }

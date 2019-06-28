@@ -25,15 +25,14 @@
 		</div>
 		<div class="input-field col-md-8 pl-0">
 			<select id="college" class="w-10 validate" required>
-				<option value="" disabled selected></option>
-				<option value="law">College of Law</option>
-				<option value="dentistry">College of Dentistry</option>
-				<option value="cas">College of Arts and Sciences</option>
-				<option value="cba">College of Business Administration</option>
-				<option value="engineering">College of Engineering</option>
-				<option value="ccss">College of Computer Studies and Systems</option>
-				<option value="educ">College of Education</option>
-				<option value="cfad">College of Fine Arts, Architecture and Design</option>
+				<option>College of Law</option>
+				<option>College of Dentistry</option>
+				<option>College of Arts and Sciences</option>
+				<option>College of Business Administration</option>
+				<option>College of Engineering</option>
+				<option>College of Computer Studies and Systems</option>
+				<option>College of Education</option>
+				<option>College of Fine Arts, Architecture and Design</option>
 			</select>
 			<label for="college">College</label>
 		</div>
