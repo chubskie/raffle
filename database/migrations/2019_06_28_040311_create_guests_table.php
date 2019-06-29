@@ -20,8 +20,8 @@ class CreateGuestsTable extends Migration
             $table->string('middle_initial')
             ->nullable();
             $table->enum('college', [
-                'law', 'dentistry', 'cas', 'cba',
-                'engineering', 'ccss', 'educ', 'cfad'
+                'law', 'dent', 'cas', 'cba',
+                'eng', 'ccss', 'educ', 'cfad'
             ]);
             $table->string('course');
             $table->timestamps();

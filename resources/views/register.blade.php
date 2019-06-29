@@ -1,5 +1,9 @@
 @extends('_layout')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+@endsection
+
 @section('body')
 <div class="mt-5 pt-3">
 	<div class="container-fluid p-0">
@@ -19,12 +23,9 @@
 		</div>
 	</div>
 </div>
-
-{{-- <p>The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information you are giving your consent to us to use your information for the aforementioned purposes.</p>
-<p>After conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.</p>
-<p> IF YOU DO NOT WISH TO BE CONTACTED FURTHER AFTER THIS EVENT, KINDLY INFORM THE ORGANIZERS.</p> --}}
 @endsection
 
 @section('scripts')
 <script src="{{ asset('js/modalswal.js')}}"></script>
+<script src="{{ asset('js/selector.js') }}"></script>
 @endsection

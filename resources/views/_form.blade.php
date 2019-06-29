@@ -1,7 +1,3 @@
-@section('styles')
-<link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-@endsection
-
 <form method="POST">
 	{{ csrf_field() }}
 	<div class="row">
@@ -25,13 +21,12 @@
 		</div>
 		<div class="input-field col-sm-8 pl-0">
 			<select id="college" type="text" name ="college" class="w-10 validate" required>
-				<option value="" disabled selected>College</option>
+				<option value="ccss">College of Computer Studies and Systems</option>
 				<option value="law">College of Law</option>
 				<option value="dent">College of Dentistry</option>
 				<option value="cas">College of Arts and Sciences</option>
 				<option value="cba">College of Business Administration</option>
-				<option value="ceng">College of Engineering</option>
-				<option value="ccss">College of Computer Studies and Systems</option>
+				<option value="eng">College of Engineering</option>
 				<option value="educ">College of Education</option>
 				<option value="cfad">College of Fine Arts, Architecture and Design</option>
 			</select>
@@ -42,7 +37,3 @@
 		<button class="btn-large btn w-50" type="submit">Submit</button>
 	</div>
 </form>
-
-@section('scripts')
-<script src="{{ asset('js/validator.js') }}"></script>
-@endsection

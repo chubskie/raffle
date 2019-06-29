@@ -5,7 +5,3 @@ $(function() {
 		.html('<i class="fas fa-spin fa-hotdog"></i>')
 	});
 });
-
-$(document).ready(function(){
-	$('select').formSelect();
-});
