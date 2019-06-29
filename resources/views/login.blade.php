@@ -17,11 +17,11 @@
 								<form method="POST">
 									{{ csrf_field() }}
 									<div class="input-field">
-										<input type="text" class="form-control validate" name="username" required>
+										<input type="text" id="username" class="form-control validate" name="username" required>
 										<label for="username">Username</label>
 									</div>
 									<div class="input-field mt-2">
-										<input type="password" class="form-control validate" name="password" required>
+										<input type="password" id="password" class="form-control validate" name="password" required>
 										<label for="password">Password</label>
 									</div>
 									@if($message != NULL)
