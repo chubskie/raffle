@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Guest;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller

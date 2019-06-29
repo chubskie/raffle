@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GuestsController extends Controller
@@ -45,6 +46,8 @@ class GuestsController extends Controller
       'college'
     ]));
 
+    $guest->created_at = Carbon::now('+8:00');
+    $guest->updated_at = Carbon::now('+8:00');
     $guest->save();
 
     // if($request->ajax()) {
