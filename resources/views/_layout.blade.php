@@ -9,8 +9,12 @@
 	@yield('styles')
 </head>
 <body>
-	<div class="m-4">
-		@yield('body')
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-11 px-0">
+				@yield('body')
+			</div>
+		</div>
 	</div>
 	@include('_scripts')
 	@yield('scripts')

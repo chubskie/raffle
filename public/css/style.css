@@ -1,3 +1,9 @@
 .form-error {
 	color: #D8000C;
 }
+
+select {
+	visibility: hidden;
+	display: block;
+	position: absolute;
+}

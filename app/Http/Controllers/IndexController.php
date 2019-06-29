@@ -13,9 +13,9 @@ class IndexController extends Controller
 	}
 
 	public function logs() {
-		$guests = Guest::All();
+		$guests = Guest::orderBy('updated_at', 'desc')->get();
 		return view('logs', [
-			'guests' => $guests
+			'guests' => $guests,
 		]);
 	}
 
