@@ -8,10 +8,10 @@ $(document).ready(function() {
   	float: 'left',
   	padding: 0,
   	margin: 0,
-  	border: '1px solid black',
+  	border: '1px solid red',
   	height: 0, 
   	width: 0,
   	top: '2em',
   	left: '3em'
   });
-}
+});

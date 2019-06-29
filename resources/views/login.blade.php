@@ -22,7 +22,7 @@
 							<label for="password">Password</label>
 						</div>
 						@if($message != NULL)
-						<small>{{ $message }}</small>
+						<small style="color: red"><i class="fas fa-exclamation-triangle pr-2"></i>{{ $message }}</small>
 						@endif
 						<button class="btn mt-3 float-right" type="submit">Sign in</button>
 					</form>

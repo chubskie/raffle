@@ -4,7 +4,7 @@
 <div class="mt-5 pt-3">
 	<div class="container-fluid">
 		<div class="row justify-content-md-center">
-			<div class="col-sm-12 col-lg-6">
+			<div class="col-sm-12 col-lg-7">
 				<div class="card">
 					<div class="card-header">
 						<h4 class="text-center">WELCOME, FRESHMEN!</h4>
