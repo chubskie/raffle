@@ -47,7 +47,11 @@ class GuestsController extends Controller
 
     $guest->save();
 
+    // if($request->ajax()) {
+    //   return 'true';
+    // } else {
     return redirect('');
+    // }
   }
 
   /**

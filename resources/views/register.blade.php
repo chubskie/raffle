@@ -28,4 +28,5 @@
 @section('scripts')
 <script src="{{ asset('js/modalswal.js')}}"></script>
 <script src="{{ asset('js/selector.js') }}"></script>
+<script src="{{ asset('js/register.js') }}"></script>
 @endsection
