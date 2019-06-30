@@ -9,7 +9,7 @@
 	<div class="container-fluid px-0">
 		<div class="row justify-content-center mt-5 pt-3">
 			<div class="col-12 col-sm-8 col-lg-5 px-0">
-				<div class="card">
+				<div class="card z-depth-3">
 					<div class="container-fluid px-0">
 						<div class="row justify-content-center">
 							<div class="col-10 px-0">

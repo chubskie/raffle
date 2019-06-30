@@ -9,7 +9,7 @@
 	<div class="container-fluid p-0">
 		<div class="row justify-content-center">
 			<div class="col-12 col-md-7 p-0">
-				<div class="card">
+				<div class="card z-depth-3">
 					<div class="card-header">
 						<h4 class="text-center">WELCOME, FRESHMEN!</h4>
 					</div>

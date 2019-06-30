@@ -1,11 +1,11 @@
 @extends('_layout')
 
 @section('body')
-<div class="card mt-3">
+<div class="card mt-3 mb-3 z-depth-3">
 	<div class="card-header">
 		<div class="row">
 			<div class="col-8">
-				<h3 class="ml-3">List of All Guests (Total: {{ number_format(count($guests), 0, '.', ',') }})</h3>
+				<h3 class="ml-3">List of All Guests (Total: {{ number_format(count($total), 0, '.', ',') }})</h3>
 			</div>
 			<div class="col-4 align-middle">
 				<a href="{{ url('/logout') }}" class="btn btn-danger float-right my-auto"><i class="fas fa-sign-out-alt pr-1"></i>Sign out</a>
@@ -67,6 +67,9 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<div class="card-footer pb-0">
+		{{ $guests->links() }}
 	</div>
 </div>
 @endsection
