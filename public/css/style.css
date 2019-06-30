@@ -1,6 +1,6 @@
 html,body {
+	background: url(../img/background.PNG);
 	background-size: cover;
-	background-image: url("/public/img/background.png");
 }
 
 .form-error {
