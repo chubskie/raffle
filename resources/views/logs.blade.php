@@ -13,9 +13,9 @@
 		</div>
 	</div>
 	<div class="card-body px-0">
-		<form method="POST">
+		<form method="POST" class="form-inline">
 			{{ csrf_field() }}
-			<div class="input-group">
+			<div class="input-group w-75">
 				<input type="text" name="search" class="form-control w-100" value="{{ $request->search }}" placeholder="Search...">
 				<button class="btn btn-success" type="submit" title="Search"><i class="fas fa-search"></i></button>
 			</div>
@@ -75,8 +75,10 @@
 			</table>
 		</div>
 	</div>
+	@if($page == 0)
 	<div class="card-footer pb-0">
 		{{ $guests->links() }}
 	</div>
+	@endif
 </div>
 @endsection

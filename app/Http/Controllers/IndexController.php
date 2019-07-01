@@ -18,6 +18,7 @@ class IndexController extends Controller
 
 	public function logs(Request $request) {
 		$total = Guest::all();
+		$page = 0;
 
 		if ($request->search) {
       // *
@@ -35,6 +36,7 @@ class IndexController extends Controller
 			->orWhere('college', 'LIKE', '%' . $request->search . '%')
 			->orWhere('course', 'LIKE', '%' . $request->search . '%')
 			->get();
+			$page ++;
 		} else {	
 			$guests = Guest::orderBy('updated_at', 'desc')->paginate(50);
 		}
@@ -43,6 +45,7 @@ class IndexController extends Controller
 			'guests' => $guests,
 			'total' => $total,
 			'request' => $request,
+			'page' => $page,
 		]);
 	}
 
