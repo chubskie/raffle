@@ -96,6 +96,10 @@ class GuestsController extends Controller
    */
   public function destroy($id)
   {
-      //
+    $guest = Guest::find($id);
+    if ($guest != null) {
+      $guest->delete();
+      return redirect('logs');
+    }
   }
 }

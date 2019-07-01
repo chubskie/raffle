@@ -10,13 +10,15 @@
 	@yield('styles')
 </head>
 <body>
-	<div class="container-fluid pb-1">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-11 px-0">
-				@yield('body')
+	<main>
+		<div class="container-fluid pb-1">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-11 px-0">
+					@yield('body')
+				</div>
 			</div>
 		</div>
-	</div>
+	</main>
 	@if(!Request::is('login') && (!Request::is('logs')))
 	<footer class="page-footer pt-0 mt-2">
 		<div class="footer-copyright">

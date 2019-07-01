@@ -19,6 +19,35 @@ class IndexController extends Controller
 	public function logs(Request $request) {
 		$total = Guest::all();
 		$page = 0;
+		$counter = 0;
+		$checker = 0;
+		$checked = array();
+
+		foreach($total as $guest) {
+			$repeat = 0;
+			if ($counter == 0) {
+				$checked[$counter] = $guest;
+				$counter++;
+				continue;
+			}
+			for ($i=0; $i < $counter; $i++) { 
+				if ($guest->last_name == $checked[$i]->last_name) {
+					$repeat++;
+					if ($guest->first_name == $checked[$i]->first_name) {
+						$repeat++;
+						if ($guest->middle_initial == $checked[$i]->middle_initial) {
+							$repeat++;
+						}
+					}
+				}
+			}
+			if ($repeat >= 3) {
+				return redirect('delete/' .$guest->id);
+			} else {
+				$checked[$counter] = $guest;
+				$counter++;
+			}
+		}
 
 		if ($request->search) {
       // *
@@ -29,7 +58,7 @@ class IndexController extends Controller
       //  * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
       //  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
       //  * ...and many others
-			
+
 			$guests = Guest::where('first_name', 'LIKE', '%' . $request->search . '%')
 			->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
 			->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
@@ -40,6 +69,8 @@ class IndexController extends Controller
 		} else {	
 			$guests = Guest::orderBy('updated_at', 'desc')->paginate(50);
 		}
+
+		// return $checked;
 
 		return view('logs', [
 			'guests' => $guests,

@@ -13,13 +13,19 @@
 		</div>
 	</div>
 	<div class="card-body px-0">
-		<form method="POST" class="form-inline">
-			{{ csrf_field() }}
-			<div class="input-group w-75 mb-3">
-				<input type="text" name="search" class="form-control w-75" value="{{ $request->search }}" placeholder="Search...">
-				<button class="btn btn-success" type="submit" title="Search"><i class="fas fa-search"></i></button>
+		<div class="container-fluid px-0">
+			<div class="row justify-content-center">
+				<div class="col-11">
+					<form method="POST" class="form-inline justify-content-center">
+						{{ csrf_field() }}
+						<div class="input-group w-100 mb-3">
+							<input type="text" name="search" class="form-control w-75" value="{{ $request->search }}" placeholder="Search...">
+							<button class="btn btn-success" type="submit" title="Search"><i class="fas fa-search"></i></button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</form>
+		</div>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
