@@ -21,7 +21,7 @@ class CreateGuestsTable extends Migration
             ->nullable();
             $table->enum('college', [
                 'law', 'dent', 'cas', 'cba',
-                'eng', 'ccss', 'educ', 'cfad'
+                'eng', 'ccss', 'educ', 'cfad',
             ]);
             $table->string('course');
             $table->timestamps();

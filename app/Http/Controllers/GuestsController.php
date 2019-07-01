@@ -37,7 +37,9 @@ class GuestsController extends Controller
    */
   public function store(Request $request)
   {
+    $checker = Guest::all();
     $guest = new Guest;
+    $counter = 0;
 
     $guest->fill($request->only([
       'last_name',
@@ -46,6 +48,22 @@ class GuestsController extends Controller
       'course',
       'college'
     ]));
+
+    foreach ($checker as $check) {
+      if ($check->last_name == $guest->last_name) {
+        $counter++;
+        if ($check->first_name == $guest->first_name) {
+          $counter++;
+          if ($check->middle_initial == $guest->middle_initial) {
+            $counter++;
+          }
+        }
+      }
+    }
+
+    if ($counter >= 3) {
+      return redirect('');
+    }
 
     $guest->created_at = Carbon::now('+8:00');
     $guest->updated_at = Carbon::now('+8:00');

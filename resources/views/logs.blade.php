@@ -43,6 +43,9 @@
 						<td>{{ $guest->last_name }}, {{ $guest->first_name }} @if($guest->middle_initial != NULL){{ $guest->middle_initial }}@endif</td>
 						<td>{{ $guest->course }}</td>
 						<td>@switch($guest->college)
+							@case('undefined')
+							Not Specified (Ticket)
+							@break
 							@case('law')
 							College of Law
 							@break
@@ -84,7 +87,7 @@
 	@if($page == 0)
 	<div class="card-footer pb-0">
 		<div class="container-fluid px-0">
-			<div class="row justify-content-center">
+			<div class="row float-right">
 				<div class="col-12 col-md-10">
 					{{ $guests->links() }}
 				</div>

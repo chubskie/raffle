@@ -21,6 +21,7 @@
 		</div>
 		<div class="input-field col-sm-8 pl-0">
 			<select id="college" type="text" name ="college" class="w-10 validate" required>
+				<option value="undefined">Not Specified (Ticket)</option>
 				<option value="law">College of Law</option>
 				<option value="ccss">College of Computer Studies and Systems</option>
 				<option value="dent">College of Dentistry</option>
