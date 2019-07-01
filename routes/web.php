@@ -21,5 +21,5 @@ Route::get('logout', 'LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('logs', 'IndexController@logs');
-	Route::post('logs', 'IndexContorller@logs');
+	Route::post('logs', 'IndexController@logs');
 });
