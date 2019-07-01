@@ -13,6 +13,13 @@
 		</div>
 	</div>
 	<div class="card-body px-0">
+		<form method="POST">
+			{{ csrf_field() }}
+			<div class="input-group">
+				<input type="text" name="search" class="form-control w-100" value="{{ $request->search }}" placeholder="Search...">
+				<button class="btn btn-success" type="submit" title="Search"><i class="fas fa-search"></i></button>
+			</div>
+		</form>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
