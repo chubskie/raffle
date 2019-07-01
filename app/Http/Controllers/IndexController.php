@@ -65,12 +65,11 @@ class IndexController extends Controller
 			->orWhere('college', 'LIKE', '%' . $request->search . '%')
 			->orWhere('course', 'LIKE', '%' . $request->search . '%')
 			->get();
+
 			$page ++;
 		} else {	
 			$guests = Guest::orderBy('updated_at', 'desc')->paginate(50);
 		}
-
-		// return $checked;
 
 		return view('logs', [
 			'guests' => $guests,
