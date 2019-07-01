@@ -1,0 +1,14 @@
+html,body {
+	background-size: cover;
+	background-image: url(/foregistration/public/img/backgroundpng);
+}
+
+.form-error {
+	color: #D8000C;
+}
+
+select {
+	visibility: hidden;
+	display: block;
+	position: absolute;
+}

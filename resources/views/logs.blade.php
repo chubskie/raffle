@@ -15,8 +15,8 @@
 	<div class="card-body px-0">
 		<form method="POST" class="form-inline">
 			{{ csrf_field() }}
-			<div class="input-group w-75">
-				<input type="text" name="search" class="form-control w-100" value="{{ $request->search }}" placeholder="Search...">
+			<div class="input-group w-75 mb-3">
+				<input type="text" name="search" class="form-control w-75" value="{{ $request->search }}" placeholder="Search...">
 				<button class="btn btn-success" type="submit" title="Search"><i class="fas fa-search"></i></button>
 			</div>
 		</form>
