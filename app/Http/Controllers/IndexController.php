@@ -20,16 +20,15 @@ class IndexController extends Controller
 		$total = Guest::all();
 
 		if ($request->search) {
-      *
-       * Different types of where functions: 
-       * 
-       * where('column', 'value') - default and simplest where function; Account::where()->where() = SELECT ... WHERE ... AND WHERE ...
-       *      where('column', 'LIKE', 'value')
-       * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
-       * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
-       * ...and many others
+      // *
+      //  * Different types of where functions: 
+      //  * 
+      //  * where('column', 'value') - default and simplest where function; Account::where()->where() = SELECT ... WHERE ... AND WHERE ...
+      //  *      where('column', 'LIKE', 'value')
+      //  * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
+      //  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
+      //  * ...and many others
 			
-
 			$guests = Guest::where('first_name', 'LIKE', '%' . $request->search . '%')
 			->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
 			->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
