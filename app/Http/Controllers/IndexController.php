@@ -42,6 +42,7 @@ class IndexController extends Controller
 		return view('logs', [
 			'guests' => $guests,
 			'total' => $total,
+			'request' => $request,
 		]);
 	}
 
