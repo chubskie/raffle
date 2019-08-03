@@ -11,10 +11,15 @@ class ReportController extends Controller
 	public function create() 
 	{
 		$guests = Guest::all();
-		$july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
-		$july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
-		$july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
-		$july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
+		// $july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
+		// $july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
+		// $july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
+		// $july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
+
+		$july1am = $guests->where('created_at', '<', '2019-06-29 12:00:00');
+		$july2am = $guests->where('created_at', '>=', '2019-06-29 12:00:00')->where('created_at', '<', '2019-06-30 00:00:00');
+		$july2pm = $guests->where('created_at', '>=', '2019-06-30 11:30:00')->where('created_at', '<', '2019-07-01 00:00:00');
+		$july8pm = $guests->where('created_at', '>=', '2019-07-01 00:00:00');
 
 		$header = array('size' => 11);
 		$title = array(
@@ -66,50 +71,73 @@ class ReportController extends Controller
 				$section->addText(htmlspecialchars('July 8, 2019 (PM Session)'), $header);
 				break;
 			}
-			$phpWord->addTableStyle('Table', $styleTable, $styleFirstRow);
-			$table = $section->addTable('Table');
-			$table->addRow();
-			$table->addCell(2500)->addText(htmlspecialchars('Name'), $columnTitle, $styleCell);
-			$table->addCell(2500)->addText(htmlspecialchars('Course'), $columnTitle, $styleCell);
-			$table->addCell(2500)->addText(htmlspecialchars('College'), $columnTitle, $styleCell);
-			$table->addCell(2500)->addText(htmlspecialchars('Time Registered'), $columnTitle, $styleCell);
-			foreach ($data as $guest)
+			$undefined = $data->where('college', '=', 'undefined');
+			$law = $data->where('college', '=', 'law');
+			$dent = $data->where('college', '=', 'dent');
+			$cas = $data->where('college', '=', 'cas');
+			$ccss = $data->where('college', '=', 'ccss');
+			$cba = $data->where('college', '=', 'cba');
+			$eng = $data->where('college', '=', 'eng');
+			$educ = $data->where('college', '=', 'educ');
+			$cfad = $data->where('college', '=', 'cfad');
+			$colleges = array($undefined, $law, $dent, $cas, $ccss, $cba, $eng, $educ, $cfad);
+
+			foreach ($colleges as $college)
 			{
-				$table->addrow();
-				$table->addCell(2500)->addText(htmlspecialchars($guest->last_name.", ".$guest->first_name." ".$guest->middle_intial));
-				$table->addCell(2500)->addText(htmlspecialchars($guest->course));
-				switch($guest->college)
+				if (count($college) > 0)
 				{
-					case 'undefined':
-					$table->addCell(2500)->addText(htmlspecialchars('No Specified College'));
-					break;
-					case 'law':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Law'));
-					break;
-					case 'dent':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Dentistry'));
-					break;
-					case 'cas':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Arts and Sciences'));
-					break;
-					case 'ccss':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Computer Studies and Systems'));
-					break;
-					case 'cba':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Business Administration'));
-					break;
-					case 'eng':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Engineering'));
-					break;
-					case 'educ':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Education'));
-					break;
-					case 'cfad':
-					$table->addCell(2500)->addText(htmlspecialchars('College of Fine Arts, Architecture and Design'));
-					break;
+					$phpWord->addTableStyle('Table', $styleTable, $styleFirstRow);
+					$table = $section->addTable('Table');
+					$table->addRow();
+					foreach($college as $students)
+					{
+						switch($students->college)
+						{
+							case 'undefined':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('No Specified College'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'law':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Law'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'dent':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Dentistry'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'cas':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Arts and Sciences'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'ccss':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Computer Studies and Systems'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'cba':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Business Administration'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'eng':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Engineering'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'educ':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Education'), $header, array('align' => 'center', 'bold' => true));
+							break;
+							case 'cfad':
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Fine Arts, Architecture and Design'), $header, array('align' => 'center', 'bold' => true));
+							break;
+						}
+						break;
+					}
+					$table->addRow();
+					$table->addCell(3750)->addText(htmlspecialchars('Name'), $columnTitle, $styleCell);
+					$table->addCell(3750)->addText(htmlspecialchars('Course'), $columnTitle, $styleCell);
+					$table->addCell(2500)->addText(htmlspecialchars('Time Registered'), $columnTitle, $styleCell);
+
+					foreach ($college as $guests)
+					{
+						$table->addrow();
+						$table->addCell(3750)->addText(htmlspecialchars($guests->last_name.", ".$guests->first_name." ".$guests->middle_intial));
+						$table->addCell(3750)->addText(htmlspecialchars($guests->course));
+						$dateTime = Carbon::parse($guests->created_at, 'UTC');
+						$table->addCell(2500)->addText(htmlspecialchars($dateTime->isoFormat('MMMM D - h:mm a')));
+					}
+					$section->addTextBreak();
 				}
-				$dateTime = Carbon::parse($guest->created_at, 'UTC');
-				$table->addCell(2500)->addText(htmlspecialchars($dateTime->isoFormat('MMMM D - h:mm a')));
 			}
 		}
 
