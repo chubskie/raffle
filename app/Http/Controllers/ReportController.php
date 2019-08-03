@@ -12,8 +12,8 @@ class ReportController extends Controller
 	{
 		$guests = Guest::all();
 		$july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
-		$july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00');
-		$july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00');
+		$july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
+		$july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
 		$july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
 
 		$header = array('size' => 11);
@@ -114,8 +114,8 @@ class ReportController extends Controller
 		}
 
 		$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-		$objWriter->save(storage_path('Report.docx'));
+		$objWriter->save(storage_path('Freshmen Orientation 2019 Report.docx'));
 
-		return response()->download(storage_path('Report.docx'));
+		return response()->download(storage_path('Freshmen Orientation 2019 Report.docx'));
 	}
 }
