@@ -11,15 +11,15 @@ class ReportController extends Controller
 	public function create() 
 	{
 		$guests = Guest::all();
-		// $july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
-		// $july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
-		// $july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
-		// $july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
+		$july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
+		$july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
+		$july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
+		$july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
 
-		$july1am = $guests->where('created_at', '<', '2019-06-29 12:00:00');
-		$july2am = $guests->where('created_at', '>=', '2019-06-29 12:00:00')->where('created_at', '<', '2019-06-30 00:00:00');
-		$july2pm = $guests->where('created_at', '>=', '2019-06-30 11:30:00')->where('created_at', '<', '2019-07-01 00:00:00');
-		$july8pm = $guests->where('created_at', '>=', '2019-07-01 00:00:00');
+		// $july1am = $guests->where('created_at', '<', '2019-06-29 12:00:00');
+		// $july2am = $guests->where('created_at', '>=', '2019-06-29 12:00:00')->where('created_at', '<', '2019-06-30 00:00:00');
+		// $july2pm = $guests->where('created_at', '>=', '2019-06-30 11:30:00')->where('created_at', '<', '2019-07-01 00:00:00');
+		// $july8pm = $guests->where('created_at', '>=', '2019-07-01 00:00:00');
 
 		$header = array('size' => 11);
 		$title = array(
