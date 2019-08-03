@@ -10,18 +10,25 @@ class ReportController extends Controller
 {
 	public function create() 
 	{
-		$guests = Guest::all();
-		$july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
-		$july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
-		$july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
-		$july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
+		$guests = Guest::orderBy('last_name', 'asc')->get();
+		// $guests = Guest::all();
+		// $july1am = $guests->where('created_at', '<=', '2019-07-01 11:30:00');
+		// $july2am = $guests->where('created_at', '<', '2019-07-02 11:30:00')->where('created_at', '>', '2019-07-01 23:59:59');
+		// $july2pm = $guests->where('created_at', '>=', '2019-07-02 11:30:00')->where('created_at', '<', '2019-07-08 00:00:00');
+		// $july8pm = $guests->where('created_at', '>=', '2019-07-08 12:00:00');
 
-		// $july1am = $guests->where('created_at', '<', '2019-06-29 12:00:00');
-		// $july2am = $guests->where('created_at', '>=', '2019-06-29 12:00:00')->where('created_at', '<', '2019-06-30 00:00:00');
-		// $july2pm = $guests->where('created_at', '>=', '2019-06-30 11:30:00')->where('created_at', '<', '2019-07-01 00:00:00');
-		// $july8pm = $guests->where('created_at', '>=', '2019-07-01 00:00:00');
+		$july1am = $guests->where('created_at', '<', '2019-06-29 12:00:00');
+		$july2am = $guests->where('created_at', '>=', '2019-06-29 12:00:00')->where('created_at', '<', '2019-06-30 00:00:00');
+		$july2pm = $guests->where('created_at', '>=', '2019-06-30 11:30:00')->where('created_at', '<', '2019-07-01 00:00:00');
+		$july8pm = $guests->where('created_at', '>=', '2019-07-01 00:00:00');
 
-		$header = array('size' => 11);
+		$header = array(
+			'size' => 11,
+			'bold' => true
+		);
+		$tableheader = array(
+			'size' => 11,
+		);
 		$title = array(
 			'size' => 12, 
 			'bold' => true
@@ -94,31 +101,31 @@ class ReportController extends Controller
 						switch($students->college)
 						{
 							case 'undefined':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('No Specified College'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('No Specified College'), $tableheader, array('align' => 'center'));
 							break;
 							case 'law':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Law'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Law'), $tableheader, array('align' => 'center'));
 							break;
 							case 'dent':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Dentistry'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Dentistry'), $tableheader, array('align' => 'center'));
 							break;
 							case 'cas':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Arts and Sciences'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Arts and Sciences'), $tableheader, array('align' => 'center'));
 							break;
 							case 'ccss':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Computer Studies and Systems'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Computer Studies and Systems'), $tableheader, array('align' => 'center'));
 							break;
 							case 'cba':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Business Administration'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Business Administration'), $tableheader, array('align' => 'center'));
 							break;
 							case 'eng':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Engineering'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Engineering'), $tableheader, array('align' => 'center'));
 							break;
 							case 'educ':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Education'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Education'), $tableheader, array('align' => 'center'));
 							break;
 							case 'cfad':
-							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Fine Arts, Architecture and Design'), $header, array('align' => 'center', 'bold' => true));
+							$table->addCell(10000, array('gridspan' => 3))->addText(htmlspecialchars('College of Fine Arts, Architecture and Design'), $tableheader, array('align' => 'center'));
 							break;
 						}
 						break;
