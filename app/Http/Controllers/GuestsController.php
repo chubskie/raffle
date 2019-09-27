@@ -53,23 +53,17 @@ class GuestsController extends Controller
     ]));
 
     foreach ($checker as $check) {
-      if ($check->last_name == $guest->last_name) {
-        $counter++;
-        if ($check->first_name == $guest->first_name) {
-          $counter++;
-          if ($check->middle_initial == $guest->middle_initial) {
-            $counter++;
-          }
-        }
+      if ($check->student_number == $guest->student_number) {
+        $counter++; 
       }
     }
 
-    if ($counter >= 3) {
+    if ($counter >= 1) {
       return redirect('');
     }
 
-    $guest->created_at = Carbon::now('+8:00');
-    $guest->updated_at = Carbon::now('+8:00');
+/*    $guest->created_at = Carbon::now('+8:00');
+    $guest->updated_at = Carbon::now('+8:00');*/
     $guest->save();
 
     return redirect('');

@@ -15,21 +15,19 @@ class CreateGuestsTable extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('student_number');
+            $table->double('student_number', 11, 0);
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('middle_initial')
+            $table->string('middle_initial')    
             ->nullable();
             $table->enum('college', [
                 'law', 'dent', 'cas', 'cba',
                 'eng', 'ccss', 'educ', 'cfad',
             ]);
             $table->string('course');
-            $table->enum('year_level', [
-                '1', '2', '3', '4',
-                '5',
-            ]);
-            $table->int('contact_number');
+            $table->integer('year_level');
+            $table->double('contact_number', 11, 0)
+            ->nullable();
             $table->timestamps();
         });
     }

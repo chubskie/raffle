@@ -22,7 +22,7 @@
 	</div>
 	<div class="row">
 		
-		<div class="input-field col-sm-8 pl-0">
+		<div class="input-field col-sm-6 pl-0">
 			<select id="college" type="text" name ="college" class="w-10 validate" required>
 				{{-- <option value="undefined">Not Specified (Ticket)</option> --}}
 				<option value="law">College of Law</option>
@@ -40,25 +40,19 @@
 			<input type="text" class="form-control validate" id="course" name="course" required>
 			<label for="course">Course</label>
 		</div>
+		<div class="input-field col-sm-3 pl-0">
+			<input type="text" class="form-control validate" id="contact_number" name="contact_number" required>
+			<label for="year_level">Year Level</label>
+		</div>
 
 
 	</div>
 	<div class="row">
-		<div class="input-field col-sm-8 pl-0">
-			<select id="year_level" type="text" name ="year_level" class="w-10 validate" required>
-				{{-- <option value="undefined">Not Specified (Ticket)</option> --}}
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<label for="year_level">Year Level</label>
-		</div>
 		<div class="input-field col-sm-3 pl-0">
 			<input type="text" class="form-control validate" id="contact_number" name="contact_number" required>
 			<label for="contact_number">Contact Number</label>
 		</div>
+	</div>
 
 	<div class="w-100 center-align">
 		<button class="btn-large btn w-50" type="submit">Submit</button>

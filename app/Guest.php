@@ -16,4 +16,9 @@ class Guest extends Model
 		'year_level', 
 		'contact_number'
 	];
+
+	protected $attributes = array(
+		'year_level' => '1'
+
+	);
 }
