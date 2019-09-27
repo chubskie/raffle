@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Guest extends Model
 {
 	protected $fillable = [
+		'student_number',
 		'last_name',
 		'first_name',
 		'middle_initial',
+		'college',
 		'course',
-		'college'
+		'year_level', 
+		'contact_number'
 	];
 }

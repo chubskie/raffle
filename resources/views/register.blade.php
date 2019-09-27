@@ -11,11 +11,9 @@
 			<div class="col-12 col-md-7 p-0">
 				<div class="card z-depth-3">
 					<div class="card-header">
-						<h4 class="text-center">WELCOME, FRESHMEN!</h4>
+						<h4 class="text-center">REGISTER HERE</h4>
 					</div>
 					<div class="card-body">
-						<h5 class="text-center">Register Here</h5>
-						<hr>
 						@include('_form')
 					</div>
 				</div>

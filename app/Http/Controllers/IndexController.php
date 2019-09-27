@@ -59,11 +59,14 @@ class IndexController extends Controller
       //  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
       //  * ...and many others
 
-			$guests = Guest::where('first_name', 'LIKE', '%' . $request->search . '%')
+			$guests = Guest::where('student_number', 'LIKE', '%' . $request->search . '%')
+			->orWhere('first_name', 'LIKE', '%' . $request->search . '%')
 			->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
 			->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
 			->orWhere('college', 'LIKE', '%' . $request->search . '%')
 			->orWhere('course', 'LIKE', '%' . $request->search . '%')
+			->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
+			->orWhere('contact_number', 'LIKE', '%' . $request->search . '%')
 			->get();
 
 			$page ++;

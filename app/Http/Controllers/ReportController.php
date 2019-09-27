@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Guest;
 use Carbon\Carbon;
 
-class ReportController extends Controller
+/*class ReportController extends Controller
 {
 	public function create() 
 	{
@@ -153,3 +153,4 @@ class ReportController extends Controller
 		return response()->download(storage_path('Freshmen Orientation 2019 Report.docx'));
 	}
 }
+*/

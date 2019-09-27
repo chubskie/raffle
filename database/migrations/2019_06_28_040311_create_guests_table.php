@@ -15,6 +15,7 @@ class CreateGuestsTable extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->increments('id');
+            $table->int('student_number');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_initial')
@@ -24,6 +25,11 @@ class CreateGuestsTable extends Migration
                 'eng', 'ccss', 'educ', 'cfad',
             ]);
             $table->string('course');
+            $table->enum('year_level', [
+                '1', '2', '3', '4',
+                '5',
+            ]);
+            $table->int('contact_number');
             $table->timestamps();
         });
     }

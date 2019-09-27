@@ -42,11 +42,14 @@ class GuestsController extends Controller
     $counter = 0;
 
     $guest->fill($request->only([
+      'student_number',
       'last_name',
       'first_name',
       'middle_initial',
+      'college',
       'course',
-      'college'
+      'year_level',
+      'contact_number'
     ]));
 
     foreach ($checker as $check) {
