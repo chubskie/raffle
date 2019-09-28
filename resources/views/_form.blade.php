@@ -1,4 +1,4 @@
-<form method="POST">
+<form method="POST" autocomplete="off">
 	{{ csrf_field() }}
 	<div class="row">
 		<div class="input-field col-sm-4 pl-0">
@@ -36,7 +36,7 @@
 			</select>
 			<label for="college">College</label>
 		</div>
-		<div class="input-field col-sm-3 pl-0">
+		<div class="input-field col-sm-3 pl-2">
 			<input type="text" class="form-control validate" id="course" name="course" required>
 			<label for="course">Course</label>
 		</div>
