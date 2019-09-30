@@ -7,6 +7,7 @@
 			<th>Year Level</th>
 			<th>Course</th>
 			<th>Contact Number</th>
+			<th>Time Registered</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,6 +39,7 @@
 			<td>{{ $guest->year_level }}</td>
 			<td>{{ $guest->course }}</td>
 			<td>{{ $guest->contact_number }}</td>
+			<td>{{ \Carbon\Carbon::parse($guest->created_at, 'UTC')->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
 		</tr>
 		@endforeach
 		<tr></tr>
