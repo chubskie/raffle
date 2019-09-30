@@ -1,9 +1,9 @@
-<form method="POST" autocomplete="off">
+<form method="POST" autocomplete="off" onsubmit="Success()">
 	{{ csrf_field() }}
 	<div class="row">
 		<div class="input-field col-sm-4 pl-0">
-			<input type="text" class="form-control validate" id="student_number" name="student_number" required>
-			<label for="student_number">Student Number</label>
+			<input type="number" class="form-control validate" id="student_number" name="student_number" required>
+			<label for="student_number" data-error="Please use numbers in this field." data-success="">Student Number</label>
 		</div>
 	</div>
 	<div class="row">
@@ -21,7 +21,6 @@
 		</div>
 	</div>
 	<div class="row">
-		
 		<div class="input-field col-sm-6 pl-0">
 			<select id="college" type="text" name ="college" class="w-10 validate" required>
 				{{-- <option value="undefined">Not Specified (Ticket)</option> --}}
@@ -36,21 +35,20 @@
 			</select>
 			<label for="college">College</label>
 		</div>
-		<div class="input-field col-sm-3 pl-2">
+		<div class="input-field col-sm-3 pl-0">
 			<input type="text" class="form-control validate" id="course" name="course" required>
 			<label for="course">Course</label>
 		</div>
 		<div class="input-field col-sm-3 pl-0">
-			<input type="text" class="form-control validate" id="contact_number" name="contact_number" required>
-			<label for="year_level">Year Level</label>
+			<input type="number" class="form-control validate" id="year_level" name="year_level" required>
+			<label for="year_level" data-error="Please use numbers in this field." data-success="">Year Level</label>
 		</div>
-
 
 	</div>
 	<div class="row">
 		<div class="input-field col-sm-3 pl-0">
-			<input type="text" class="form-control validate" id="contact_number" name="contact_number" required>
-			<label for="contact_number">Contact Number</label>
+			<input type="number" class="form-control validate" id="contact_number" name="contact_number" required>
+			<label for="contact_number" data-error="Please use numbers in this field." data-success="">Contact Number</label>
 		</div>
 	</div>
 

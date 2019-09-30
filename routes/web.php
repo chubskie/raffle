@@ -22,6 +22,7 @@ Route::get('logout', 'LoginController@logout');
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('logs', 'IndexController@logs');
 	Route::post('logs', 'IndexController@logs');
+	Route::get('export', 'ReportController@export');
 	Route::get('delete/{id}', 'GuestsController@destroy');
 	Route::get('report', 'ReportController@create');
 });
