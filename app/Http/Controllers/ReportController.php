@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Guest;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\GuestsExport;
 
 class ReportController extends Controller
