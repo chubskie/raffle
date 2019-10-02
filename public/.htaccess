@@ -5,8 +5,6 @@ Options -MultiViews -Indexes
 
 RewriteEngine On
 
-RewriteBase /likharaya2019
-
 # Handle Authorization Header
 RewriteCond %{HTTP:Authorization} .
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

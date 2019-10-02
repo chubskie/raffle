@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Guest;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
-{
+class IndexController extends Controller {
 	public function register() {
 		$year = Carbon::now('+8:00');
 		return view('register', [
@@ -23,14 +22,14 @@ class IndexController extends Controller
 		$checker = 0;
 		$checked = array();
 
-		foreach($total as $guest) {
+		foreach ($total as $guest) {
 			$repeat = 0;
 			if ($counter == 0) {
 				$checked[$counter] = $guest;
 				$counter++;
 				continue;
 			}
-			for ($i=0; $i < $counter; $i++) { 
+			for ($i = 0; $i < $counter; $i++) {
 				if ($guest->last_name == $checked[$i]->last_name) {
 					$repeat++;
 					if ($guest->first_name == $checked[$i]->first_name) {
@@ -42,7 +41,7 @@ class IndexController extends Controller
 				}
 			}
 			if ($repeat >= 3) {
-				return redirect('delete/' .$guest->id);
+				return redirect('delete/' . $guest->id);
 			} else {
 				$checked[$counter] = $guest;
 				$counter++;
@@ -50,27 +49,27 @@ class IndexController extends Controller
 		}
 
 		if ($request->search) {
-      // *
-      //  * Different types of where functions: 
-      //  * 
-      //  * where('column', 'value') - default and simplest where function; Account::where()->where() = SELECT ... WHERE ... AND WHERE ...
-      //  *      where('column', 'LIKE', 'value')
-      //  * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
-      //  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
-      //  * ...and many others
+			// *
+			//  * Different types of where functions:
+			//  *
+			//  * where('column', 'value') - default and simplest where function; Account::where()->where() = SELECT ... WHERE ... AND WHERE ...
+			//  *      where('column', 'LIKE', 'value')
+			//  * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
+			//  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
+			//  * ...and many others
 
 			$guests = Guest::where('student_number', 'LIKE', '%' . $request->search . '%')
-			->orWhere('first_name', 'LIKE', '%' . $request->search . '%')
-			->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
-			->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
-			->orWhere('college', 'LIKE', '%' . $request->search . '%')
-			->orWhere('course', 'LIKE', '%' . $request->search . '%')
-			->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
-			->orWhere('contact_number', 'LIKE', '%' . $request->search . '%')
-			->get();
+				->orWhere('first_name', 'LIKE', '%' . $request->search . '%')
+				->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
+				->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
+				->orWhere('college', 'LIKE', '%' . $request->search . '%')
+				->orWhere('course', 'LIKE', '%' . $request->search . '%')
+				->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
+				->orWhere('contact_number', 'LIKE', '%' . $request->search . '%')
+				->get();
 
-			$page ++;
-		} else {	
+			$page++;
+		} else {
 			$guests = Guest::orderBy('updated_at', 'desc')->paginate(50);
 		}
 
@@ -84,12 +83,19 @@ class IndexController extends Controller
 
 	public function login() {
 		$message = NULL;
-		if(Auth::user()) {
+		if (Auth::user()) {
 			return redirect('logs');
 		} else {
 			return view('login', [
-				'message' => $message
+				'message' => $message,
 			]);
 		}
+	}
+
+	public function raffle() {
+		$guests = Guest::all();
+		return view('raffle', [
+			'guests' => $guests,
+		]);
 	}
 }
