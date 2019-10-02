@@ -178,8 +178,8 @@ var pickName = function() {
     var name = choices.text()
     Swal.fire({
       html: `
-      <div style="font-size:35px;color:#f368e0;font-weight:bold;margin-top:100%;position:relative;left:5%">CONGRATULATIONS</div>
-      <div style="font-size:70px;color:#f368e0;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:150%">${name}</div> 
+      <div style="text-shadow:2px 2px 3px blueviolet;font-size:35px;color:#f368e0;font-weight:bold;margin-top:110%;position:relative;left:5%">CONGRATULATIONS</div>
+      <div style="text-shadow:2px 2px 5px blueviolet;text-transform:uppercase;font-size:70px;color:#f368e0;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:150%">${name}</div> 
       <br>
       </div>
       `,
