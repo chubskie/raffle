@@ -1,12 +1,6 @@
 <form method="POST" autocomplete="off" onsubmit="Success()">
 	{{ csrf_field() }}
 	<div class="row">
-		<div class="input-field col-sm-4 pl-0">
-			<input type="number" class="form-control validate" id="student_number" name="student_number" required>
-			<label for="student_number" data-error="Please use numbers in this field." data-success="">Student Number</label>
-		</div>
-	</div>
-	<div class="row">
 		<div class="input-field col-sm-5 pl-0">
 			<input type="text" class="form-control validate" id="last_name" name="last_name" required>
 			<label for="last_name">Last Name</label>
@@ -45,13 +39,6 @@
 		</div>
 
 	</div>
-	<div class="row">
-		<div class="input-field col-sm-3 pl-0">
-			<input type="number" class="form-control validate" id="contact_number" name="contact_number" required>
-			<label for="contact_number" data-error="Please use numbers in this field." data-success="">Contact Number</label>
-		</div>
-	</div>
-
 	<div class="w-100 center-align">
 		<button class="btn-large btn w-50" type="submit">Submit</button>
 	</div>

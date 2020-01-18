@@ -13,7 +13,6 @@ class CreateGuestsTable extends Migration {
 	public function up() {
 		Schema::create('guests', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('student_number', 11, 0);
 			$table->string('last_name');
 			$table->string('first_name');
 			$table->string('middle_initial')
@@ -24,8 +23,6 @@ class CreateGuestsTable extends Migration {
 			]);
 			$table->string('course');
 			$table->string('year_level');
-			$table->string('contact_number', 11, 0)
-				->nullable();
 			$table->timestamps();
 		});
 	}

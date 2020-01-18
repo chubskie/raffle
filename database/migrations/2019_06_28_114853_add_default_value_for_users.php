@@ -17,8 +17,8 @@ class AddDefaultValueForUsers extends Migration
     $account = new User;
 
     $account->fill([
-      'username' => 'rnd',
-      'password' => 'ueccssrnd'
+      'username' => 'rndunit',
+      'password' => 'rndccss2008'
     ]);
 
     $account->save();

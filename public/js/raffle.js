@@ -99,6 +99,25 @@ var removeDuplicateNames = function(data) {
   return data
 }
 
+function shuffle(array) {
+  var current = array.length, tempVal, random;
+
+  // While there remain elements to shuffle
+  while (0 !== current) {
+
+    // Pick a random remaining element
+    random = Math.floor(Math.random() * current);
+    current -= 1;
+
+    // Swap with current element
+    tempVal = array[current];
+    array[current] = array[random];
+    array[random] = tempVal;
+  }
+
+  return array;
+}
+
 var makeTicketsWithPoints = function() {
   tickets = []
   $('.ticket').remove()
@@ -109,7 +128,7 @@ var makeTicketsWithPoints = function() {
         tickets.push(t)
     }
   })
-  tickets.reverse()
+  tickets.reverse();
   size = 60
   $('.ticket').css('font-size', size + 'px')
   while (!elementInViewport(tickets[0].dom.get(0)) && size > 6) {
@@ -178,15 +197,15 @@ var pickName = function() {
     var name = choices.text()
     Swal.fire({
       html: `
-      <div style="text-shadow:2px 2px 3px blueviolet;font-size:35px;color:#f368e0;font-weight:bold;margin-top:110%;position:relative;left:5%">CONGRATULATIONS</div>
-      <div style="text-shadow:2px 2px 5px blueviolet;text-transform:uppercase;font-size:70px;color:#f368e0;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:150%">${name}</div> 
+      <div style="text-shadow:2px 2px 3px darkorange;font-size:35px;color:#ffe570;font-weight:bold;margin-top:-40%;position:relative;left:-45%">CONGRATULATIONS</div>
+      <div style="text-shadow:2px 2px 5px darkorange;text-transform:uppercase;font-size:70px;color:#ffe570;font-weight:bold;margin-top:0%;position:relative;left:-65%;width:140%">${name}</div> 
       <br>
       </div>
       `,
       customClass: 'swal2-modal-md',
       showConfirmButton: false,
       background: 'none',
-      backdrop: 'url(https://ccssrnd.tech/likharaya2019/img/likharaya.png) 45% 10%/ 90% 100% no-repeat',
+      backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
       allowOutsideClick: false
     }).then(function() {
       inProgress = false

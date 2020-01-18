@@ -31,12 +31,10 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col">Student Number</th>
 						<th scope="col">Name</th>
 						<th scope="col">College</th>
 						<th scope="col">Course</th>
 						<th scope="col">Year Level</th>
-						<th scope="col">Contact Number</th>
 						<th scope="col">Time Registered</th>
 					</tr>
 				</thead>
@@ -44,9 +42,7 @@
 					@if(count($guests) > 0)
 					@foreach($guests as $guest)
 					<tr>
-						<td>{{ $guest->student_number }}</td>
 						<td>{{ $guest->last_name }}, {{ $guest->first_name }} @if($guest->middle_initial != NULL){{ $guest->middle_initial }}@endif</td>
-						
 						<td>@switch($guest->college)
 							@case('undefined')
 							Not Specified (Ticket)
@@ -79,7 +75,6 @@
 						</td>
 						<td>{{ $guest->course }}</td>
 						<td>{{ $guest->year_level }}</td>
-						<td>{{ $guest->contact_number }}</td>
 						<td>{{ \Carbon\Carbon::parse($guest->created_at, 'UTC')->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
 					</tr>
 					@endforeach

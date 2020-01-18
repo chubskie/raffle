@@ -39,31 +39,36 @@ class GuestsController extends Controller
   {
     $checker = Guest::all();
     $guest = new Guest;
-    $counter = 0;
 
     $guest->fill($request->only([
-      'student_number',
       'last_name',
       'first_name',
       'middle_initial',
       'college',
       'course',
-      'year_level',
-      'contact_number'
+      'year_level'
     ]));
 
     foreach ($checker as $check) {
-      if ($check->student_number == $guest->student_number) {
-        $counter++; 
+      if (strtolower($check->last_name) == strtolower($guest->last_name)) {
+        if (strtolower($check->first_name) == strtolower($guest->first_name)) {
+          if (strtolower($check->middle_initial) == strtolower($guest->middle_initial)) {
+	    if ($check->college == $guest->college) {
+	      if (strtolower($check->course) == strtolower($guest->course)) {
+		if ($check->year_level == $guest->year_level) {
+	          return redirect('');
+		}
+	      }
+	    }
+	  }
+        }
       }
     }
 
-    if ($counter >= 1) {
-      return redirect('');
-    }
+    $guest->created_at = Carbon::now('+8:00');
+    $guest->updated_at = Carbon::now('+8:00');
 
-/*    $guest->created_at = Carbon::now('+8:00');
-    $guest->updated_at = Carbon::now('+8:00');*/
+    sleep(2);
     $guest->save();
 
     return redirect('');

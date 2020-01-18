@@ -19,34 +19,6 @@ class IndexController extends Controller {
 		$total = Guest::all();
 		$page = 0;
 		$counter = 0;
-		$checker = 0;
-		$checked = array();
-
-		foreach ($total as $guest) {
-			$repeat = 0;
-			if ($counter == 0) {
-				$checked[$counter] = $guest;
-				$counter++;
-				continue;
-			}
-			for ($i = 0; $i < $counter; $i++) {
-				if ($guest->last_name == $checked[$i]->last_name) {
-					$repeat++;
-					if ($guest->first_name == $checked[$i]->first_name) {
-						$repeat++;
-						if ($guest->middle_initial == $checked[$i]->middle_initial) {
-							$repeat++;
-						}
-					}
-				}
-			}
-			if ($repeat >= 3) {
-				return redirect('delete/' . $guest->id);
-			} else {
-				$checked[$counter] = $guest;
-				$counter++;
-			}
-		}
 
 		if ($request->search) {
 			// *
@@ -58,14 +30,12 @@ class IndexController extends Controller {
 			//  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
 			//  * ...and many others
 
-			$guests = Guest::where('student_number', 'LIKE', '%' . $request->search . '%')
-				->orWhere('first_name', 'LIKE', '%' . $request->search . '%')
+			$guests = Guest::where('first_name', 'LIKE', '%' . $request->search . '%')
 				->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
 				->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
 				->orWhere('college', 'LIKE', '%' . $request->search . '%')
 				->orWhere('course', 'LIKE', '%' . $request->search . '%')
 				->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
-				->orWhere('contact_number', 'LIKE', '%' . $request->search . '%')
 				->get();
 
 			$page++;
