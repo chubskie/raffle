@@ -16,7 +16,7 @@
 						<label for="name">Full Name</label>
 					</div>
 					<div class="center-align">
-						<button class="btn-large btn" type="submit">Submit</button>
+						<button class="btn-large btn waves-effect waves-green" type="submit">Submit</button>
 					</div>
 				</form>
 			</div>

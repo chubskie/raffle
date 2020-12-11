@@ -26,7 +26,7 @@ $(function() {
 		$('tfoot').empty().append('<tr><td colspan="3"><ul class="pagination right"></ul></td></tr>');
 		if (prev != null) $('.pagination').append('<li><button class="btn" data-url="' + prev + '"><i class="fas fa-chevron-left"></i></button></li>');
 		if (next != null) $('.pagination').append('<li><button class="btn" data-url="' + next + '"><i class="fas fa-chevron-right"></i></button></li>');
-		if (lastpage >= 3) $('.pagination').append('<li><form class="valign-wrapper"><div class="input-field inline"><input type="number" class="validate" min="1" max="' + lastpage + '" value="' + current + '" placeholder="Page #"></div>/' + lastpage + '</form></li>');
+		if (lastpage >= 3) $('.pagination').append('<li><form class="valign-wrapper"><div class="input-field inline"><input type="number" class="validate" min="1" max="' + lastpage + '" value="' + current + '" placeholder="Page #"></div><h6>/' + lastpage + '</h6></form></li>');
 	}
 
 	function retrieveGuests(search, link) {
@@ -64,10 +64,10 @@ $(function() {
 						<td>${data.guests.data[guest].name}</td>
 						<td>${data.guests.data[guest].timestamp}</td>
 						<td class="right-align">
-						<button class="btn edit" data-id="${data.guests.data[guest].id}">
+						<button class="btn waves-effect waves-white edit" data-id="${data.guests.data[guest].id}">
 						<i class="fas fa-edit"></i>
 						</button>
-						<button class="btn delete" data-id="${data.guests.data[guest].id}">
+						<button class="btn waves-effect waves-red delete" data-id="${data.guests.data[guest].id}">
 						<i class="fas fa-trash"></i>
 						</button>
 						</td>
@@ -76,7 +76,7 @@ $(function() {
 					}
 					$('tbody').empty().append(table);
 					$('#total').text(data.guests.total);
-					if (data.guests.total > 1)
+					if (data.guests.total > 50)
 						pagination(data.guests.current_page, data.guests.prev_page_url, data.guests.next_page_url, data.guests.last_page);
 					request = false;
 				}
@@ -95,12 +95,13 @@ $(function() {
 		});
 	}
 
-	var search = '', request = false, link = 'logs';
+	var search = '', request = true, link = 'logs', currentPage = 1;
+	$('.modal').modal();
 	retrieveGuests(search, link);
 
 	$('#logout').submit(function() {
 		$('input').attr('readonly', true);
-		$('button').attr('disbaled', true);
+		$('button').attr('disabled', true);
 		$(this).find('button').empty().append('<i class="fas fa-spinner fa-spin"></i>');
 	});
 
@@ -149,6 +150,7 @@ $(function() {
 									timer: 2500
 								}).then(function() {
 									retrieveGuests(search, link);
+									request = true;
 								});
 							},
 							error: function(err) {
@@ -164,11 +166,72 @@ $(function() {
 		});
 	});
 
+	$('body').delegate('.edit', 'click', function() {
+		Swal.fire({
+			html: `<span class="icon is-large">
+			<i class="fas fa-spinner fa-spin fa-lg"></i>
+			</span>`,
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false
+		});
+		let id = $(this).data('id');
+		$.ajax({
+			type: 'POST',
+			url: 'guests/' + id,
+			datatype: 'JSON',
+			success: function(data) {
+				$('.modal input').val(data.guest.name).attr('data-id', id);
+				Swal.close();
+				$('.modal').modal('open');
+			},
+			error: function(err) {
+				ajaxError(err);
+			}
+		});
+	});
+
+	$('.modal').submit(function(e) {
+		e.preventDefault();
+		$('.modal').modal('close');
+		Swal.fire({
+			html: `<span class="icon is-large">
+			<i class="fas fa-spinner fa-spin fa-lg"></i>
+			</span>`,
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			allowEscapeKey: false
+		});
+		let name = $('.modal input').val();
+		$.ajax({
+			type: 'POST',
+			url: 'guests/' + $('.modal input').attr('data-id') + '/edit',
+			data: {name:name},
+			datatype: 'JSON',
+			success: function(response) {
+				Swal.fire({
+					icon: response.status,
+					title: response.msg,
+					text: 'Registered user has been updated',
+					showConfirmButton: false,
+					timer: 2500
+				}).then(function() {
+					retrieveGuests(search, link);
+					request = true;
+				});
+			},
+			error: function(err) {
+				ajaxError(err);
+			}
+		});
+	});
+
 	$('#search').submit(function(e) {
 		e.preventDefault();
 		search = $('#search input').val();
-		request = true;
+		link = 'logs';
 		retrieveGuests(search, link);
+		request = true;
 	});
 
 	$('#search input').keyup(delay(function() {
@@ -183,5 +246,14 @@ $(function() {
 		e.preventDefault();
 		let link = $(this).data('url');
 		retrieveGuests(search, link);
+		request = true;
+	});
+
+	$('body').delegate('.pagination form', 'submit', function(e) {
+		e.preventDefault();
+		let page = $(this).find('input').val();
+		link = 'http://localhost/tykraffle/public/logs?page=' + page;
+		retrieveGuests(search, link);
+		request = true;
 	});
 });

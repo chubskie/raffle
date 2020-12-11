@@ -14,7 +14,7 @@
 Route::get('login', 'IndexController@login')->name('login');
 Route::post('login', 'LoginController@login');
 
-Route::get('', 'GuestsController@create');
+Route::get('', 'GuestsController@create')->name('register');
 Route::post('register', 'GuestsController@store');
 
 Route::post('logout', 'LoginController@logout')->name('logout');
@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('logs', 'GuestsController@index')->name('dashboard');
 
 	Route::post('guests/{id}', 'GuestsController@show');
+	Route::post('guests/{id}/edit', 'GuestsController@update');
 	Route::post('guests/{id}/delete', 'GuestsController@destroy');
 
 	Route::get('export', 'ReportController@export');

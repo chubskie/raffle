@@ -17,7 +17,7 @@
 					</div>
 					<p id="message" class="red-text"></p>
 					<div class="center-align">
-						<button class="btn float-right" type="submit">Sign in</button>
+						<button class="btn waves-effect waves-green float-right" type="submit">Sign in</button>
 					</div>
 				</form>
 			</div>

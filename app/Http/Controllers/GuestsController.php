@@ -18,11 +18,12 @@ class GuestsController extends Controller
   public function index(Request $request)
   {
     if ($request->search == '')
-      $guests = Guest::orderBy('updated_at', 'desc')->paginate(1);
+      $guests = Guest::orderBy('updated_at', 'desc')->paginate(20);
     else
-      $guests = Guest::where('name', 'LIKE', '%' . $request->search . '%')->paginate(1);
+      $guests = Guest::where('name', 'LIKE', '%' . $request->search . '%')
+    ->orderBy('updated_at', 'desc')->paginate(20);
     foreach ($guests as $guest)
-      $guest->timestamp = Carbon::parse($guest->created_at)->isoFormat('MMMM D, YYYY - h:mma');
+      $guest->timestamp = Carbon::parse($guest->updated_at)->isoFormat('MMMM D, YYYY - h:mma');
 
     if ($request->data == 'logs') {
       return response()->json([
@@ -77,7 +78,6 @@ class GuestsController extends Controller
     $guest = Guest::find($id);
 
     return response()->json([
-      'status' => 'success',
       'guest' => $guest
     ]);
   }
@@ -102,7 +102,14 @@ class GuestsController extends Controller
    */
   public function update(Request $request, $id)
   {
-      //
+    $guest = Guest::find($id);
+    $guest->name = strip_tags($request->name);
+    $guest->save();
+
+    return response()->json([
+      'status' => 'success',
+      'msg' => 'Update Successful'
+    ]);
   }
 
   /**

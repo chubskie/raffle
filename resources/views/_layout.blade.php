@@ -9,12 +9,20 @@
 	@yield('styles')
 </head>
 <body>
+	@if (!Request::is('logs'))
+	<main>
+		<div class="container" style="height:80vh">
+			@yield('body')
+		</div>
+	</main>
+	@else
 	<main>
 		<div class="container">
 			@yield('body')
 		</div>
 	</main>
-	@if(!Request::is('login') && (!Request::is('logs')))
+	@endif
+	@if(!Request::is('login') && !Request::is('logs'))
 	<footer class="page-footer">
 		<div class="footer-copyright">
 			<div class="container">
@@ -23,7 +31,7 @@
 		</div>
 	</footer>
 	@endif
-	
+
 	@include('_scripts')
 	@yield('scripts')
 </body>
