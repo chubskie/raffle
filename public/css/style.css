@@ -21,7 +21,8 @@ select {
 	display: block;
 	position: absolute;
 }
-#bg{
-	
+
+#bg {
 	background-color: rgba(245, 245, 245, 1);
 	opacity: 0.9;
+}

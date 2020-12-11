@@ -21,22 +21,13 @@ class IndexController extends Controller {
 		$counter = 0;
 
 		if ($request->search) {
-			// *
-			//  * Different types of where functions:
-			//  *
-			//  * where('column', 'value') - default and simplest where function; Account::where()->where() = SELECT ... WHERE ... AND WHERE ...
-			//  *      where('column', 'LIKE', 'value')
-			//  * orWhere() - only exists after a self-standing where function; Account::where()->orWhere() = SELECT ... WHERE ... OR WHERE
-			//  * whereYear(), whereMonth(), whereDate(), whereBetween() - where functions for dates
-			//  * ...and many others
-
 			$guests = Guest::where('first_name', 'LIKE', '%' . $request->search . '%')
-				->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
-				->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
-				->orWhere('college', 'LIKE', '%' . $request->search . '%')
-				->orWhere('course', 'LIKE', '%' . $request->search . '%')
-				->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
-				->get();
+			->orWhere('middle_initial', 'LIKE', '%' . $request->search . '%')
+			->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
+			->orWhere('college', 'LIKE', '%' . $request->search . '%')
+			->orWhere('course', 'LIKE', '%' . $request->search . '%')
+			->orWhere('year_level', 'LIKE', '%' . $request->search . '%')
+			->get();
 
 			$page++;
 		} else {
@@ -52,14 +43,9 @@ class IndexController extends Controller {
 	}
 
 	public function login() {
-		$message = NULL;
-		if (Auth::user()) {
+		if (Auth::check())
 			return redirect('logs');
-		} else {
-			return view('login', [
-				'message' => $message,
-			]);
-		}
+		return view('login');
 	}
 
 	public function raffle() {

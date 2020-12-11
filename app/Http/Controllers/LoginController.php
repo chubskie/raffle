@@ -7,17 +7,18 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-	protected $username = 'username';
 	public function login(Request $request) {
-		$message = NULL;
-		if(Auth::attempt($request->only(['username', 'password']))) {
-			return redirect('logs');
-		} else {
-			$message = "Invalid Username and/or Password";
-			return view('login', [
-				'message' => $message
+		$credentials = $request->only(['username', 'password']);
+		if(Auth::attempt($credentials)) {
+			return response()->json([
+				'status' => 'success',
+				'msg' => 'Log In Successful'
 			]);
 		}
+		return response()->json([
+			'status' => 'error',
+			'msg' => 'Invalid username and/or password'
+		]);
 	}
 
 	public function logout(Request $request) {

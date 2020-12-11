@@ -11,16 +11,16 @@
 |
  */
 
-Route::get('', 'IndexController@register');
-Route::post('', 'GuestsController@store');
-
 Route::get('login', 'IndexController@login')->name('login');
 Route::post('login', 'LoginController@login');
+
+Route::get('', 'IndexController@register');
+Route::post('register', 'GuestsController@store');
 
 Route::get('logout', 'LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('logs', 'IndexController@logs');
+	Route::get('logs', 'IndexController@logs')->name('dashboard');
 	Route::post('logs', 'IndexController@logs');
 	Route::get('export', 'ReportController@export');
 	Route::get('delete/{id}', 'GuestsController@destroy');

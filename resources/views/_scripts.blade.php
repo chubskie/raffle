@@ -3,4 +3,3 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/materialize.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
