@@ -1,103 +1,42 @@
 @extends('_layout')
 
 @section('body')
-<div class="card mt-3 mb-3 z-depth-3">
-	<div class="card-header">
-		<div class="row">
-			<div class="col-8">
-				<h3>List of All Guests (Total: {{ number_format(count($total), 0, '.', ',') }})</h3>
+<div class="card z-depth-3">
+	<div class="card-content">
+		<div class="row valign-wrapper">
+			<div class="col s12 m8">
+				<h4>List of All Guests (Total: <span id="total">{{-- {{ number_format(count($guests), 0, '.', ',') }} --}}</span>)</h4>
 			</div>
-			<div class="col-4 align-middle">
-				<form id="logout" method="POST" action="{{ route('logout') }}">
+			<div class="col m4">
+				<form id="logout" class="right-align" method="POST" action="{{ route('logout') }}">
 					@csrf
-					<button class="btn btn-danger float-right mb-2">
+					<button class="btn red">
 						<i class="fas fa-sign-out-alt pr-1"></i>
 						<span>Sign Out</span>
 					</button>
 				</form>
 			</div>
 		</div>
-	</div>
-	<div class="card-body px-0">
-		<div class="container-fluid px-0">
-			<div class="row justify-content-center">
-				<form class="form-inline justify-content-center">
-					<div class="input-field">
-						<input type="text" name="search" class="form-control w-75" placeholder="Search...">
-					</div>
-				</form>
+		<form id="search">
+			<div class="input-field">
+				<input type="text" name="search" placeholder="Search...">
 			</div>
-		</div>
-		<div class="table-responsive">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">College</th>
-						<th scope="col">Course</th>
-						<th scope="col">Year Level</th>
-						<th scope="col">Time Registered</th>
-					</tr>
-				</thead>
-				<tbody>
-					@if(count($guests) > 0)
-					@foreach($guests as $guest)
-					<tr>
-						<td>{{ $guest->last_name }}, {{ $guest->first_name }} @if($guest->middle_initial != NULL){{ $guest->middle_initial }}@endif</td>
-						<td>@switch($guest->college)
-							@case('undefined')
-							Not Specified (Ticket)
-							@break
-							@case('law')
-							College of Law
-							@break
-							@case('dent')
-							College of Dentistry
-							@break
-							@case('cas')
-							College of Arts and Sciences
-							@break
-							@case('ccss')
-							College of Computer Studies and Systems
-							@break
-							@case('cba')
-							College of Business Administration
-							@break
-							@case('eng')
-							College of Engineering
-							@break
-							@case('educ')
-							College of Education
-							@break
-							@case('cfad')
-							College of Fine Arts, Architecture and Design
-							@break
-							@endswitch
-						</td>
-						<td>{{ $guest->course }}</td>
-						<td>{{ $guest->year_level }}</td>
-						<td>{{ \Carbon\Carbon::parse($guest->created_at, 'UTC')->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
-					</tr>
-					@endforeach
-					@else
-					<tr>
-						<td><h5>No Guests Found.</h5></td>
-					</tr>
-					@endif
-				</tbody>
-			</table>
-		</div>
+		</form>
+		<table class="striped highlight responsive-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Time Registered</th>
+					<th style="width:150px">Actions</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+			<tfoot></tfoot>
+		</table>
 	</div>
-	@if($page == 0)
-	<div class="card-footer pb-0">
-		<div class="container-fluid px-0">
-			<div class="row float-right">
-				<div class="col-12 col-md-10">
-					{{ $guests->links() }}
-				</div>
-			</div>
-		</div>
-	</div>
-	@endif
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/logs.js') }}"></script>
 @endsection

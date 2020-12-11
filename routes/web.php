@@ -14,15 +14,17 @@
 Route::get('login', 'IndexController@login')->name('login');
 Route::post('login', 'LoginController@login');
 
-Route::get('', 'IndexController@register');
+Route::get('', 'GuestsController@create');
 Route::post('register', 'GuestsController@store');
 
 Route::post('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('logs', 'IndexController@logs')->name('dashboard');
-	Route::post('logs', 'IndexController@logs');
+	Route::any('logs', 'GuestsController@index')->name('dashboard');
+
+	Route::post('guests/{id}', 'GuestsController@show');
+	Route::post('guests/{id}/delete', 'GuestsController@destroy');
+
 	Route::get('export', 'ReportController@export');
-	Route::get('delete/{id}', 'GuestsController@destroy');
 	Route::get('raffle', 'IndexController@raffle');
 });

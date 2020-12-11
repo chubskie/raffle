@@ -7,7 +7,7 @@
 @section('body')
 <div class="row valign-wrapper center-align">
 	<div class="col l6 m8 s12 offset-l3">
-		<div class="card">
+		<div class="card z-depth-3">
 			<div class="card-content">
 				<h4 class="text-center">REGISTER HERE</h4>
 				<form autocomplete="off">
@@ -16,7 +16,7 @@
 						<label for="name">Full Name</label>
 					</div>
 					<div class="center-align">
-						<button class="btn-large btn w-50" type="submit">Submit</button>
+						<button class="btn-large btn" type="submit">Submit</button>
 					</div>
 				</form>
 			</div>

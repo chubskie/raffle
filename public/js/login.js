@@ -21,11 +21,10 @@ $(function() {
 			data: data,
 			datatype: 'JSON',
 			success: function(response) {
-				$('input').removeAttr('readonly');
-				$('button').empty().text('SIGN IN').removeAttr('disabled');
+				$('button').empty().text('SIGN IN');
 				if (response.status == 'success') {
 					Swal.fire({
-						type: 'success',
+						icon: 'success',
 						title: response.msg,
 						showConfirmButton: false,
 						timer: 2500
@@ -33,6 +32,8 @@ $(function() {
 						window.location.href = $('#loginjs').data('url');
 					});
 				} else {
+					$('input').val().removeAttr('readonly');
+					$('button').removeAttr('disabled');
 					$('#message').text(response.msg);
 					$('input').val('');
 				}
@@ -42,7 +43,7 @@ $(function() {
 				$('button').empty().text('SIGN IN').removeAttr('disabled');
 				console.log(err);
 				Swal.fire({
-					type: 'error',
+					icon: 'error',
 					title: 'Cannot Connect to Server',
 					text: 'Something went wrong. Please try again later.'
 				});

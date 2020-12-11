@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Contracts\Support\Jsonable;
 
 class GuestsController extends Controller
 {
@@ -13,9 +15,23 @@ class GuestsController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
+    if ($request->search == '')
+      $guests = Guest::orderBy('updated_at', 'desc')->paginate(1);
+    else
+      $guests = Guest::where('name', 'LIKE', '%' . $request->search . '%')->paginate(1);
+    foreach ($guests as $guest)
+      $guest->timestamp = Carbon::parse($guest->created_at)->isoFormat('MMMM D, YYYY - h:mma');
 
+    if ($request->data == 'logs') {
+      return response()->json([
+        'guests' => $guests
+      ]);
+    }
+    return view('logs', [
+      'guests' => $guests,
+    ]);
   }
 
   /**
@@ -25,7 +41,9 @@ class GuestsController extends Controller
    */
   public function create()
   {
-
+    return view('register', [
+      'year' => 2020
+    ]);
   }
 
   /**
@@ -56,7 +74,12 @@ class GuestsController extends Controller
    */
   public function show($id)
   {
+    $guest = Guest::find($id);
 
+    return response()->json([
+      'status' => 'success',
+      'guest' => $guest
+    ]);
   }
 
   /**
@@ -93,6 +116,9 @@ class GuestsController extends Controller
     $guest = Guest::find($id);
 
     $guest->delete();
-    return redirect('logs');
+    return response()->json([
+      'status' => 'success',
+      'msg' => 'Delete Successful'
+    ]);
   }
 }

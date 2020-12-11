@@ -6,9 +6,9 @@ $.ajaxSetup({
 
 $(function() {
 	Swal.fire({
+		icon: 'info',
 		title: 'Privacy Notice',
 		text: 'The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information, you are giving your consent to us to use your information for the aforementioned purposes. After conclusion of the event and completion of all necessary reports, your personal data will be saved in secured files for future references and networking activities. IF YOU DO NOT WISH TO BE CONTACTED FURTHER AFTER THIS EVENT, KINDLY INFORM THE ORGANIZERS.',
-		type: 'info',
 		confirmButtonText: 'Proceed',
 	});
 
@@ -27,7 +27,7 @@ $(function() {
 				$('button').removeAttr('disabled');
 				if (response.status == 'success') {
 					Swal.fire({
-						type: 'success',
+						icon: 'success',
 						title: response.msg,
 						showConfirmButton: false,
 						timer: 2500
@@ -42,7 +42,7 @@ $(function() {
 				$('button').empty().text('SUBMIT').removeAttr('disabled');
 				console.log(err);
 				Swal.fire({
-					type: 'error',
+					icon: 'error',
 					title: 'Cannot Connect to Server',
 					text: 'Something went wrong. Please try again later.'
 				});
