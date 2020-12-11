@@ -5,26 +5,20 @@
 @endsection
 
 @section('body')
-<div class="mt-5 pt-3">
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-6">
-				<div class="card z-depth-3" id="bg">
-					<div class="card-header">
-						<h4 class="text-center">REGISTER HERE</h4>
+<div class="row valign-wrapper center-align">
+	<div class="col l6 m8 s12 offset-l3">
+		<div class="card">
+			<div class="card-content">
+				<h4 class="text-center">REGISTER HERE</h4>
+				<form autocomplete="off">
+					<div class="input-field">
+						<input type="text" class="validate" id="name" name="name" required>
+						<label for="name">Full Name</label>
 					</div>
-					<div class="card-body">
-						<form autocomplete="off">
-							<div class="input-field">
-								<input type="text" class="form-control" id="name" name="name" required>
-								<label for="name">Full Name</label>
-							</div>
-							<div class="w-100 center-align">
-								<button class="btn-large btn w-50" type="submit">Submit</button>
-							</div>
-						</form>
+					<div class="center-align">
+						<button class="btn-large btn w-50" type="submit">Submit</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

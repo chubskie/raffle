@@ -12,17 +12,23 @@ main {
 	flex: 1 0 auto;
 }
 
+main .container {
+	height: 80vh;
+}
+
+.valign-wrapper {
+	height: 100%;
+}
+
 .form-error {
 	color: #D8000C;
 }
 
-select {
-	visibility: hidden;
-	display: block;
-	position: absolute;
+.footer-copyright {
+	margin-left: 40px;
 }
 
-#bg {
+.card {
 	background-color: rgba(245, 245, 245, 1);
 	opacity: 0.9;
 }

@@ -17,7 +17,7 @@ Route::post('login', 'LoginController@login');
 Route::get('', 'IndexController@register');
 Route::post('register', 'GuestsController@store');
 
-Route::get('logout', 'LoginController@logout');
+Route::post('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('logs', 'IndexController@logs')->name('dashboard');

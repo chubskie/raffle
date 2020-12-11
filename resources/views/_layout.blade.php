@@ -10,16 +10,12 @@
 </head>
 <body>
 	<main>
-		<div class="container-fluid pb-1">
-			<div class="row justify-content-center">
-				<div class="col-12 col-md-11 px-0">
-					@yield('body')
-				</div>
-			</div>
+		<div class="container">
+			@yield('body')
 		</div>
 	</main>
 	@if(!Request::is('login') && (!Request::is('logs')))
-	<footer class="page-footer pt-0 mt-2">
+	<footer class="page-footer">
 		<div class="footer-copyright">
 			<div class="container">
 				Copyright ©{{ \Carbon\Carbon::parse($year, 'UTC')->isoFormat('YYYY') }}. Research and Development Unit.

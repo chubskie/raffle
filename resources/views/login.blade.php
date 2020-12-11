@@ -1,9 +1,5 @@
 @extends('_layout')
 
-@section('styles')
-<link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-@endsection
-
 @section('body')
 <div class="valign-center">
 	<div class="container-fluid">

@@ -23,8 +23,8 @@ $(function() {
 			data: data,
 			datatype: 'JSON',
 			success: function(response) {
-				$('input').attr('readonly', true);
-				$('button').attr('disabled', true);
+				$('input').removeAttr('readonly');
+				$('button').removeAttr('disabled');
 				if (response.status == 'success') {
 					Swal.fire({
 						type: 'success',
