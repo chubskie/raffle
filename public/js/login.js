@@ -1,3 +1,10 @@
+$.ajaxSetup({
+	headers: {
+		'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+	}
+});
+
+
 $(function() {
 	$('input').keyup(function() {
 		$('#message').text('');
@@ -27,6 +34,7 @@ $(function() {
 					});
 				} else {
 					$('#message').text(response.msg);
+					$('input').val('');
 				}
 			},
 			error: function(err) {
@@ -39,7 +47,6 @@ $(function() {
 					text: 'Something went wrong. Please try again later.'
 				});
 			}
-		}
-	});
+		});
 	});
 });

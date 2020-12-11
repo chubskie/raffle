@@ -23,7 +23,7 @@
 										<input type="password" id="password" class="form-control validate" name="password" required>
 										<label for="password">Password</label>
 									</div>
-									<small id="message" class="text-red"></small>
+									<p id="message" class="red-text"></p>
 									<button class="btn mt-3 float-right" type="submit">Sign in</button>
 								</form>
 							</div>
@@ -37,5 +37,5 @@
 @endsection
 
 @section('scripts')
-<script id="loginjs" script="{{ asset('js/login.js') }}" data-url="{{ route('dashboard') }}"></script>
+<script id="loginjs" src="{{ asset('js/login.js') }}" data-url="{{ route('dashboard') }}"></script>
 @endsection

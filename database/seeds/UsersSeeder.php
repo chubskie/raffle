@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
     {
     	$user = new User;
     	$user->username = 'rndunit';
-    	$user->password = 'rndcccss2008';
+    	$user->password = 'rndccss2008';
     	$user->save();
     }
-  }
+}
