@@ -90,7 +90,14 @@ class GuestsController extends Controller
    */
   public function edit($id)
   {
-      //
+    $guest = Guest::find($id);
+    $guest->raffle = true;
+    $guest->save();
+
+    $guests = Guest::whereNull('raffle')->inRandomOrder()->limit(100)->get();
+    return response()->json([
+      'guests' => $guests
+    ]);
   }
 
   /**

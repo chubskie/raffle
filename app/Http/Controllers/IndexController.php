@@ -15,7 +15,7 @@ class IndexController extends Controller {
 	}
 
 	public function raffle() {
-		$guests = Guest::all();
+		$guests = Guest::whereNull('raffle')->inRandomOrder()->limit(100)->get();
 		return view('raffle', [
 			'guests' => $guests,
 		]);

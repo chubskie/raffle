@@ -1,3 +1,9 @@
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
 var excluded = ['2OMMIGXFGD']
 
 var colors = ['#4daf7c', '#87d37c', '#00b16a', '#2ecc71', '#3fc380']
@@ -10,7 +16,7 @@ var transitionColor = ['#ff8d06', '#d91400', '#82dc2c']
  */
 
  var inProgress = false
- var size = 150
+ var size = 60
 
  function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
@@ -30,7 +36,6 @@ function elementInViewport(el) {
   var left = el.offsetLeft
   var width = el.offsetWidth
   var height = el.offsetHeight
-  console.log(el);
 
   while (el.offsetParent) {
     el = el.offsetParent
@@ -132,8 +137,7 @@ var makeTicketsWithPoints = function() {
   tickets.reverse();
   size = 60
   $('.ticket').css('font-size', size + 'px')
-  while (!elementInViewport(tickets[0].dom.get(0)) && size > 12) {
-    console.log(size);
+  while (!elementInViewport(tickets[0].dom.get(0)) && size > 10) {
     size--
     $('.ticket').css('font-size', size + 'px')
   }
@@ -184,13 +188,20 @@ var pickName = function() {
     })
   } else {
     choices = $(choices[0].dom);
-    // $.ajax({
-    //   type: 'POST',
-    //   data: { id: choices.data('ref') }
-    // })
-    imported = imported.filter(function(index) {
-      return index.id != choices.data('ref')
-    })
+    $.ajax({
+      type: 'POST',
+      url: 'guests/' + choices.data('ref') + '/raffle',
+      datatype: 'JSON',
+      success: function(data) {
+        imported = data.guests;
+      },
+      error: function(err) {
+        console.log(err);
+        imported = imported.filter(function(index) {
+          return index.id != choices.data('ref')
+        })
+      }
+    });
     var top = choices.css('top')
     var left = choices.css('left')
     var fontsize = choices.css('font-size')

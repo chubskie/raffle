@@ -47,7 +47,8 @@ $(function() {
 			datatype: 'JSON',
 			success: function(data) {
 				let table = '';
-				if (data.guests.total == 0) {
+				console.log(data);
+				if (data.guests.total === 0) {
 					table += `
 					<tr>
 					<td colspan="3" class="center-align">
@@ -73,12 +74,12 @@ $(function() {
 						</tr>
 						`;
 					}
-					$('tbody').empty().append(table);
-					$('#total').text(data.guests.total);
 					if (data.guests.total > 50)
 						pagination(data.guests.current_page, data.guests.prev_page_url, data.guests.next_page_url, data.guests.last_page);
 					request = false;
 				}
+				$('tbody').empty().append(table);
+				$('#total').text(data.guests.total);
 			},
 			error: function(err) {
 				ajaxError(err);

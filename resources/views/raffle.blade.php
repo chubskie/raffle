@@ -32,6 +32,7 @@
 	<script src="{{ asset('js/raffle.js') }}"></script>
 	<script>
 		var imported = @json($guests);
+		console.log({{ count($guests) }});
 		$('.enter-names').hide();
 		makeTicketsWithPoints();
 	</script>
