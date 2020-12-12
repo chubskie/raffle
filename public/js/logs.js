@@ -123,8 +123,8 @@ $(function() {
 					title: 'Confirm Delete',
 					text: `Are you sure you want to delete ${data.guest.name}?`,
 					showCancelButton: true,
-					canceButtonText: 'No',
-					showConfirmButton: 'Yes'
+					cancelButtonText: 'No',
+					confirmButtonText: 'Yes'
 				}).then((result) => {
 					if (result.isConfirmed) {
 						Swal.fire({
