@@ -69,10 +69,10 @@ function Ticket(name, ref) {
         'drop',
         { direction: directions[length % directions.length] },
         length <= 3 ? 750 : 3000 / length,
-	function() {
-	callback();
-	}
-        )
+        function() {
+         callback();
+       }
+       )
       $('#participant-number').text(length - 1 + '/' + tickets.length)
     } else {
       this.dom.css({
@@ -121,9 +121,9 @@ function shuffle(array) {
 var makeTicketsWithPoints = function() {
   tickets = []
   $('.ticket').remove()
-  map(removeDuplicateNames(imported), function(tdata) {
+  map(shuffle(removeDuplicateNames(imported)), function(tdata) {
     if (excluded.indexOf(tdata.id) === -1) {
-      var t = new Ticket(tdata.first_name + ' ' + tdata.last_name, tdata.id)
+      var t = new Ticket(tdata.name, tdata.id)
       if (t.points > 0) t.dom.appendTo($('body'))
         tickets.push(t)
     }
@@ -182,10 +182,10 @@ var pickName = function() {
     })
   } else {
     choices = $(choices[0].dom);
-    $.ajax({
-      type: 'POST',
-      data: { id: choices.data('ref') }
-    })
+    // $.ajax({
+    //   type: 'POST',
+    //   data: { id: choices.data('ref') }
+    // })
     imported = imported.filter(function(index) {
       return index.id != choices.data('ref')
     })
@@ -197,15 +197,16 @@ var pickName = function() {
     var name = choices.text()
     Swal.fire({
       html: `
-      <div style="text-shadow:2px 2px 3px darkorange;font-size:35px;color:#ffe570;font-weight:bold;margin-top:-40%;position:relative;left:-45%">CONGRATULATIONS</div>
-      <div style="text-shadow:2px 2px 5px darkorange;text-transform:uppercase;font-size:70px;color:#ffe570;font-weight:bold;margin-top:0%;position:relative;left:-65%;width:140%">${name}</div> 
+      <div style="text-shadow:2px 2px 3px orangered;font-size:35px;color:yellow;font-weight:bold;left:5%;position:relative">CONGRATULATIONS</div>
+      <div style="text-shadow:2px 2px 5px orangered;text-transform:uppercase;font-size:70px;color:yellow;font-weight:bold;margin-top:0%;position:relative;left:-15%;width:140%">${name}</div> 
       <br>
       </div>
       `,
       customClass: 'swal2-modal-md',
       showConfirmButton: false,
       background: 'none',
-      backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
+      // backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
+      backdrop: 'url(' + $('#bg').data('url') + ') center/ cover no-repeat',
       allowOutsideClick: false
     }).then(function() {
       inProgress = false

@@ -47,7 +47,6 @@ $(function() {
 			datatype: 'JSON',
 			success: function(data) {
 				let table = '';
-				console.log(data);
 				if (data.guests.total == 0) {
 					table += `
 					<tr>

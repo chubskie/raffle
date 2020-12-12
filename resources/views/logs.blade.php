@@ -4,10 +4,14 @@
 <div class="card z-depth-3">
 	<div class="card-content">
 		<div class="row valign-wrapper">
-			<div class="col s12 m8">
+			<div class="col s12 m6">
 				<h5>List of All Guests (Total: <span id="total">{{-- {{ number_format(count($guests), 0, '.', ',') }} --}}</span>)</h5>
 			</div>
-			<div class="col s12 m4">
+			<div class="col s12 m6">
+				<button class="btn btn-flat waves-effect waves-blue">
+					<i class="fas fa-file-import"></i>
+					<span>Import</span>
+				</button>
 				<form id="logout" class="right-align" method="POST" action="{{ route('logout') }}">
 					@csrf
 					<button class="btn btn-flat waves-effect waves-red">

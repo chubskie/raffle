@@ -9,18 +9,18 @@
 	<link rel="stylesheet" href="{{ asset('css/raffle.css') }}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-	<title>Scholars' Christmas Party Raffle</title>
+	<title>Raffle</title>
 	<style>
-	html, body {
-		background-color:black;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-position: center;
-		min-height: 100vh;
-		overflow:hidden !important;
-	}
-</style>
+		html, body {
+			background-color:black;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			min-height: 100vh;
+			overflow:hidden !important;
+		}
+	</style>
 </head>
 <body>
 	<div class='enter-names'></div>
@@ -35,5 +35,6 @@
 		$('.enter-names').hide();
 		makeTicketsWithPoints();
 	</script>
+	<script id="bg" data-url="{{ asset('img/splashBG2.jpg') }}"></script>
 </body>
 </html>
