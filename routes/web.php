@@ -26,6 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('guests/{id}/edit', 'GuestsController@update');
 	Route::post('guests/{id}/delete', 'GuestsController@destroy');
 
-	Route::get('export', 'ReportController@export');
+	Route::post('import', 'ReportController@import')->name('import');
 	Route::get('raffle', 'IndexController@raffle');
 });

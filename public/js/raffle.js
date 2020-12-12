@@ -10,7 +10,7 @@ var transitionColor = ['#ff8d06', '#d91400', '#82dc2c']
  */
 
  var inProgress = false
- var size = 60
+ var size = 150
 
  function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
@@ -30,6 +30,7 @@ function elementInViewport(el) {
   var left = el.offsetLeft
   var width = el.offsetWidth
   var height = el.offsetHeight
+  console.log(el);
 
   while (el.offsetParent) {
     el = el.offsetParent
@@ -124,14 +125,15 @@ var makeTicketsWithPoints = function() {
   map(shuffle(removeDuplicateNames(imported)), function(tdata) {
     if (excluded.indexOf(tdata.id) === -1) {
       var t = new Ticket(tdata.name, tdata.id)
-      if (t.points > 0) t.dom.appendTo($('body'))
+      if (t.points > 0) t.dom.appendTo($('.wrapper'))
         tickets.push(t)
     }
   })
   tickets.reverse();
   size = 60
   $('.ticket').css('font-size', size + 'px')
-  while (!elementInViewport(tickets[0].dom.get(0)) && size > 6) {
+  while (!elementInViewport(tickets[0].dom.get(0)) && size > 12) {
+    console.log(size);
     size--
     $('.ticket').css('font-size', size + 'px')
   }
@@ -197,8 +199,8 @@ var pickName = function() {
     var name = choices.text()
     Swal.fire({
       html: `
-      <div style="text-shadow:2px 2px 3px orangered;font-size:35px;color:yellow;font-weight:bold;left:5%;position:relative">CONGRATULATIONS</div>
-      <div style="text-shadow:2px 2px 5px orangered;text-transform:uppercase;font-size:70px;color:yellow;font-weight:bold;margin-top:0%;position:relative;left:-15%;width:140%">${name}</div> 
+      <div style="text-shadow:2px 2px 3px black;font-size:35px;color:white;font-weight:bold;position:relative">CONGRATULATIONS</div>
+      <div style="text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:140%">${name}</div> 
       <br>
       </div>
       `,

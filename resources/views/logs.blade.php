@@ -8,17 +8,23 @@
 				<h5>List of All Guests (Total: <span id="total">{{-- {{ number_format(count($guests), 0, '.', ',') }} --}}</span>)</h5>
 			</div>
 			<div class="col s12 m6">
-				<button class="btn btn-flat waves-effect waves-blue">
-					<i class="fas fa-file-import"></i>
-					<span>Import</span>
-				</button>
-				<form id="logout" class="right-align" method="POST" action="{{ route('logout') }}">
-					@csrf
-					<button class="btn btn-flat waves-effect waves-red">
-						<i class="fas fa-sign-out-alt pr-1"></i>
-						<span>Sign Out</span>
-					</button>
-				</form>
+				<div class="row valign-wrapper right">
+					<div class="col">
+						<button id="import" class="btn btn-flat waves-effect waves-blue">
+							<i class="fas fa-file-import"></i>
+							<span>Import</span>
+						</button>
+					</div>
+					<div class="col">
+						<form id="logout" method="POST" action="{{ route('logout') }}">
+							@csrf
+							<button class="btn btn-flat waves-effect waves-red">
+								<i class="fas fa-sign-out-alt pr-1"></i>
+								<span>Sign Out</span>
+							</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<form id="search">
@@ -40,12 +46,30 @@
 		</table>
 	</div>
 </div>
-<form class="modal">
+<form id="guest" class="modal">
 	<div class="modal-content">
 		<h4>Edit Guest</h4>
 		<div class="input-field">
 			<input type="text" id="name" class="validate" placeholder="First Name M.I. Last Name" required>
 			<label for="name">Full Name</label>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-flat waves-effect waves-red lighten-1 modal-close" type="button">Cancel</button>
+		<button class="btn btn-flat waves-effect waves-green" type="submit">Submit</button>
+	</div>
+</form>
+<form id="excel" class="modal">
+	<div class="modal-content">
+		<h4>Import Guests</h4>
+		<div class="file-field input-field">
+			<div class="btn">
+				<span>File</span>
+				<input id="file" type="file" accept=".xls, .xlsx, .csv" name="file" required>
+			</div>
+			<div class="field-path wrapper">
+				<input class="file-path validate" type="text">
+			</div>
 		</div>
 	</div>
 	<div class="modal-footer">

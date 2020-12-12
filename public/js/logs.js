@@ -106,9 +106,7 @@ $(function() {
 
 	$('body').delegate('.delete', 'click', function() {
 		Swal.fire({
-			html: `<span class="icon is-large">
-			<i class="fas fa-spinner fa-spin fa-lg"></i>
-			</span>`,
+			html: `<i class="fas fa-spinner fa-spin fa-lg"></i>`,
 			showConfirmButton: false,
 			allowOutsideClick: false,
 			allowEscapeKey: false
@@ -129,9 +127,7 @@ $(function() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						Swal.fire({
-							html: `<span class="icon is-large">
-							<i class="fas fa-spinner fa-spin fa-lg"></i>
-							</span>`,
+							html: `<i class="fas fa-spinner fa-spin fa-lg"></i>`,
 							showConfirmButton: false,
 							allowOutsideClick: false,
 							allowEscapeKey: false
@@ -167,9 +163,7 @@ $(function() {
 
 	$('body').delegate('.edit', 'click', function() {
 		Swal.fire({
-			html: `<span class="icon is-large">
-			<i class="fas fa-spinner fa-spin fa-lg"></i>
-			</span>`,
+			html: `<i class="fas fa-spinner fa-spin fa-lg"></i>`,
 			showConfirmButton: false,
 			allowOutsideClick: false,
 			allowEscapeKey: false
@@ -180,9 +174,9 @@ $(function() {
 			url: 'guests/' + id,
 			datatype: 'JSON',
 			success: function(data) {
-				$('.modal input').val(data.guest.name).attr('data-id', id);
+				$('#guest input').val(data.guest.name).attr('data-id', id);
 				Swal.close();
-				$('.modal').modal('open');
+				$('#guest').modal('open');
 			},
 			error: function(err) {
 				ajaxError(err);
@@ -190,21 +184,19 @@ $(function() {
 		});
 	});
 
-	$('.modal').submit(function(e) {
+	$('#guest').submit(function(e) {
 		e.preventDefault();
-		$('.modal').modal('close');
+		$('#guest').modal('close');
 		Swal.fire({
-			html: `<span class="icon is-large">
-			<i class="fas fa-spinner fa-spin fa-lg"></i>
-			</span>`,
+			html: `<i class="fas fa-spinner fa-spin fa-lg"></i>`,
 			showConfirmButton: false,
 			allowOutsideClick: false,
 			allowEscapeKey: false
 		});
-		let name = $('.modal input').val();
+		let name = $('#guest input').val();
 		$.ajax({
 			type: 'POST',
-			url: 'guests/' + $('.modal input').attr('data-id') + '/edit',
+			url: 'guests/' + $('#guest input').attr('data-id') + '/edit',
 			data: {name:name},
 			datatype: 'JSON',
 			success: function(response) {
@@ -254,5 +246,75 @@ $(function() {
 		link = 'http://localhost/tykraffle/public/logs?page=' + page;
 		retrieveGuests(search, link);
 		request = true;
+	});
+
+	$('#import').click(function() {
+		$('#excel input').val('');
+		$('#excel').modal('open');
+	});
+
+	$('#excel').submit(function(e) {
+		e.preventDefault();
+		$('button').attr('disabled', true);
+		$('input').attr('readonly', true);
+		$('#excel button[type="submit"]').empty().append(`<i class="fas fa-spinner fa-spin"></i>`);
+		var data = new FormData($('#excel')[0]);
+		data.append('file', $('#file')[0].files[0]);
+		$.ajax({
+			type: 'POST',
+			url: 'import',
+			data: data,
+			processData: false,
+			contentType: false,
+			datatype: 'JSON',
+			success: function(response) {
+				if (response.status == 'success') {
+					$('button').removeAttr('disabled');
+					$('input').removeAttr('readonly');
+					$('#excel button[type="submit"]').empty().text('Submit');
+					Swal.fire({
+						icon: response.status,
+						title: response.msg,
+						showConfirmButton: false,
+						timer: 2500
+					}).then(function() {
+						search = '', logs = '';
+						$('#excel').modal('close');
+						$('#file').val('');
+						retrieveGuests(search, link);
+						request = true;
+					});
+				}
+			},
+			error: function(err) {
+				$('button').removeAttr('disabled');
+				$('input').removeAttr('readonly');
+				$('#excel button[type="submit"]').empty().text('Submit');
+				ajaxError(err);
+			}
+		});
+	});
+
+	$('#file').change(function(e) {
+		if (e.target.files.length > 0) {
+			let valid = false, filename = e.target.files[0].name, validExtensions = ['.xlsx', '.xls', '.csv'];
+			for (let i = 0; i < validExtensions.length; i++) {
+				let extension = validExtensions[i];
+				if (filename.substr(filename.length - extension.length, extension.length).toLowerCase() == extension.toLowerCase()) {
+					valid = true;
+					break;
+				}
+			}
+			if (!valid) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Invalid File',
+					text: 'Allowed files are: ' + validExtensions.join(', ')
+				});
+				$('#excel button[type="submit"]').attr('disabled', true);
+			} else {
+				$('#excel').submit();
+			}
+		}
 	});
 });
