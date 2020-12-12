@@ -188,6 +188,9 @@ var pickName = function() {
     })
   } else {
     choices = $(choices[0].dom);
+    imported = imported.filter(function(index) {
+      return index.id != choices.data('ref')
+    })
     $.ajax({
       type: 'POST',
       url: 'guests/' + choices.data('ref') + '/raffle',
@@ -197,9 +200,6 @@ var pickName = function() {
       },
       error: function(err) {
         console.log(err);
-        imported = imported.filter(function(index) {
-          return index.id != choices.data('ref')
-        })
       }
     });
     var top = choices.css('top')
