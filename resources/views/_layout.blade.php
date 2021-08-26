@@ -26,7 +26,7 @@
 	<footer class="page-footer">
 		<div class="footer-copyright">
 			<div class="container">
-				Copyright ©{{ \Carbon\Carbon::parse($year, 'UTC')->isoFormat('YYYY') }}. Research and Development Unit.
+				Copyright ©{{ \Carbon\Carbon::now()->isoFormat('YYYY') }}. Research and Development Unit.
 			</div>
 		</div>
 	</footer>

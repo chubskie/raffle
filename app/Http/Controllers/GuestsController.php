@@ -42,9 +42,7 @@ class GuestsController extends Controller
    */
   public function create()
   {
-    return view('register', [
-      'year' => 2020
-    ]);
+    return view('register');
   }
 
   /**
