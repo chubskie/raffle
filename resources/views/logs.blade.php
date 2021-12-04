@@ -4,15 +4,27 @@
 <div class="card z-depth-3">
 	<div class="card-content">
 		<div class="row valign-wrapper">
-			<div class="col s12 m6">
+			<div class="col s12 m3">
 				<h5>List of All Guests (Total: <span id="total">{{-- {{ number_format(count($guests), 0, '.', ',') }} --}}</span>)</h5>
 			</div>
-			<div class="col s12 m6">
+			<div class="col s12 m9">
 				<div class="row valign-wrapper right">
+					<div class="col">
+						<a href="raffle" id="raffle" class="btn btn-flat waves-effect waves-blue">
+							<i class="fas fa-ticket-alt"></i>
+							<span>Raffle</span>
+						</a>
+					</div>
 					<div class="col">
 						<button id="import" class="btn btn-flat waves-effect waves-blue">
 							<i class="fas fa-file-import"></i>
 							<span>Import</span>
+						</button>
+					</div>
+					<div class="col">
+						<button id="clear" class="btn btn-flat waves-effect waves-red">
+							<i class="fas fa-user-slash"></i>
+							<span>Clear Guests</span>
 						</button>
 					</div>
 					<div class="col">

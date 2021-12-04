@@ -133,4 +133,18 @@ class GuestsController extends Controller
       'msg' => 'Delete Successful'
     ]);
   }
+
+  public function destroyall(Request $request)
+  {
+    $guests = Guest::all();
+
+    foreach ($guests as $guest) {
+      $guest->delete();
+    }
+
+    return response()->json([
+      'status' => 'success',
+      'msg' => 'Delete Successful'
+    ]);
+  }
 }

@@ -22,6 +22,7 @@ Route::post('logout', 'LoginController@logout')->name('logout');
 Route::group(['middleware' => 'auth'], function () {
 	Route::any('logs', 'GuestsController@index')->name('dashboard');
 
+	Route::post('guests/clear', 'GuestsController@destroyall');
 	Route::post('guests/{id}', 'GuestsController@show');
 	Route::post('guests/{id}/raffle', 'GuestsController@edit');
 	Route::post('guests/{id}/edit', 'GuestsController@update');
@@ -29,4 +30,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('import', 'ReportController@import')->name('import');
 	Route::get('raffle', 'IndexController@raffle');
+
 });

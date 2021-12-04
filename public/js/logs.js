@@ -318,4 +318,43 @@ $(function() {
 			}
 		}
 	});
+
+	$('#clear').click(function() {
+		Swal.fire({
+			icon: 'warning',
+			title: 'Clear All Guests',
+			text: 'Are you sure you want to clear the guests list?',
+			showCancelButton: true,
+			cancelButtonText: 'No',
+			confirmButtonText: 'Yes'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					html: `<i class="fas fa-spinner fa-spin fa-lg"></i>`,
+					showConfirmButton: false,
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				});
+				$.ajax({
+					type: 'POST',
+					url: 'guests/clear',
+					datatype: 'JSON',
+					success: function(response) {
+						Swal.fire({
+							icon: 'success',
+							title: response.msg,
+							showConfirmButton: false,
+							timer: 2500
+						}).then(function() {
+							retrieveGuests(search, link);
+							request = true;
+						});
+					},
+					error: function(err) {
+						ajaxError(err);
+					}
+				});	
+			}
+		});
+	});
 });
