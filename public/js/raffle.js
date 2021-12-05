@@ -6,8 +6,9 @@ $.ajaxSetup({
 
 var excluded = ['2OMMIGXFGD']
 
-var colors = ['#4daf7c', '#87d37c', '#00b16a', '#2ecc71', '#3fc380']
-var transitionColor = ['#ff8d06', '#d91400', '#82dc2c']
+// var colors = ['#4daf7c', '#87d37c', '#00b16a', '#2ecc71', '#3fc380']
+var colors = ['#eb042c', '#fc5060', '#aa1924', '#f40404', '#ee3e38', '#ff0404']
+var transitionColor = ['#ff8d06', '#d91400', '#d1183e']
 /**
  * Raffle
  * 2012
