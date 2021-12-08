@@ -225,7 +225,7 @@ var pickName = function() {
       background: 'none',
       // backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
       // backdrop: 'url(' + $('#bg').data('url') + ') center/ cover no-repeat',
-      // backdrop: 'black',
+      backdrop: 'black',
       allowOutsideClick: false
     }).then(function() {
       inProgress = false
