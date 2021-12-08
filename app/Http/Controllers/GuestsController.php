@@ -92,7 +92,7 @@ class GuestsController extends Controller
     $guest->raffle = true;
     $guest->save();
 
-    $guests = Guest::whereNull('raffle')->inRandomOrder()->limit(100)->get();
+    $guests = Guest::whereNull('raffle')->inRandomOrder()->get();
     return response()->json([
       'guests' => $guests
     ]);

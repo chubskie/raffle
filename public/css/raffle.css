@@ -80,7 +80,7 @@
   body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background: #f0f0f0;
   }
 

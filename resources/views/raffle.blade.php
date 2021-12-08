@@ -22,7 +22,7 @@
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
-				overflow:hidden !important;
+				/*overflow:hidden !important;*/
 			}
 		</style>
 	</head>
@@ -33,6 +33,7 @@
 		<script src="{{ asset('js/jquery-ui-1.8.23.custom.min.js') }}"></script>
 		<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 		<script src="{{ asset('js/raffle.js') }}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 		<script>
 			var imported = @json($guests);
 			console.log({{ count($guests) }});

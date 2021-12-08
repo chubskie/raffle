@@ -17,7 +17,7 @@ var transitionColor = ['#ff8d06', '#d91400', '#d1183e']
  */
 
  var inProgress = false
- var size = 60
+ var size = 40
 
  function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
@@ -136,7 +136,7 @@ var makeTicketsWithPoints = function() {
     }
   })
   tickets.reverse();
-  size = 60
+  size = 40
   $('.ticket').css('font-size', size + 'px')
   while (!elementInViewport(tickets[0].dom.get(0)) && size > 10) {
     size--
@@ -209,6 +209,10 @@ var pickName = function() {
     var width = choices.width()
     var id = choices.data('ref')
     var name = choices.text()
+    confetti({
+      particleCount: 150,
+      spread: 200
+    });
     Swal.fire({
       html: `
       <div style="text-shadow:2px 2px 3px black;font-size:50px;color:white;font-weight:bold;position:relative;font-family:'Corinthia',cursive;">Congratulations!!</div>
@@ -220,7 +224,8 @@ var pickName = function() {
       showConfirmButton: false,
       background: 'none',
       // backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
-      backdrop: 'url(' + $('#bg').data('url') + ') center/ cover no-repeat',
+      // backdrop: 'url(' + $('#bg').data('url') + ') center/ cover no-repeat',
+      // backdrop: 'black',
       allowOutsideClick: false
     }).then(function() {
       inProgress = false
@@ -228,6 +233,7 @@ var pickName = function() {
       .show(500)
       .unbind('click')
       setTimeout(function() {
+        confetti.reset();
         makeTicketsWithPoints(ticketNames, ticketPoints)
       }, 700)
     });
