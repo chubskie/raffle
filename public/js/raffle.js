@@ -216,7 +216,7 @@ var pickName = function() {
     Swal.fire({
       html: `
       <div style="top:75px;text-shadow:2px 2px 3px black;font-size:50px;color:white;font-weight:bold;position:relative;font-family:'Corinthia',cursive;">Congratulations!!</div>
-      <div style="top:75px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-50%;width:200%">${name}</div> 
+      <div style="top:75px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:60px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-100%;width:300%">${name}</div> 
       <br>
       </div>
       `,
