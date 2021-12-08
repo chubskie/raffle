@@ -75,7 +75,7 @@ function Ticket(name, ref) {
       .hide(
         'drop',
         { direction: directions[length % directions.length] },
-        length <= 3 ? 500 : 2000 / length,
+        length <= 3 ? 750 : 1000 / length,
         function() {
          callback();
        }
@@ -87,7 +87,7 @@ function Ticket(name, ref) {
       })
       setTimeout(function() {
         callback()
-      }, length == 2 ? 500 : 2000 / length)
+      }, length == 2 ? 1000 : 1000 / length)
     }
   }
 }
