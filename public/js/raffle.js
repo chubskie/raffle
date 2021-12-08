@@ -215,14 +215,14 @@ var pickName = function() {
     });
     Swal.fire({
       html: `
-      <div style="top:45px;text-shadow:2px 2px 3px black;font-size:50px;color:white;font-weight:bold;position:relative;font-family:'Corinthia',cursive;">Congratulations!!</div>
-      <div style="top:45px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:140%">${name}</div> 
+      <div style="top:75px;text-shadow:2px 2px 3px black;font-size:50px;color:white;font-weight:bold;position:relative;font-family:'Corinthia',cursive;">Congratulations!!</div>
+      <div style="top:75px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:140%">${name}</div> 
       <br>
       </div>
       `,
       customClass: 'swal2-modal-md',
       showConfirmButton: false,
-      background: 'black',
+      background: 'none',
       // backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
       backdrop: 'url(' + $('#bg').data('url') + ') center/ contain no-repeat',
       allowOutsideClick: false
