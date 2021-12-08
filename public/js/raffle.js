@@ -17,7 +17,7 @@ var transitionColor = ['#ff8d06', '#d91400', '#d1183e']
  */
 
  var inProgress = false
- var size = 40
+ var size = 8
 
  function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
@@ -136,7 +136,7 @@ var makeTicketsWithPoints = function() {
     }
   })
   tickets.reverse();
-  size = 40
+  size = 8
   $('.ticket').css('font-size', size + 'px')
   while (!elementInViewport(tickets[0].dom.get(0)) && size > 10) {
     size--
@@ -216,7 +216,7 @@ var pickName = function() {
     Swal.fire({
       html: `
       <div style="top:75px;text-shadow:2px 2px 3px black;font-size:50px;color:white;font-weight:bold;position:relative;font-family:'Corinthia',cursive;">Congratulations!!</div>
-      <div style="top:75px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-20%;width:140%">${name}</div> 
+      <div style="top:75px;text-shadow:2px 2px 5px black;text-transform:uppercase;font-size:70px;color:white;font-weight:bold;margin-top:0%;position:relative;left:-50%;width:200%">${name}</div> 
       <br>
       </div>
       `,
