@@ -40,6 +40,6 @@
 			$('.enter-names').hide();
 			makeTicketsWithPoints();
 		</script>
-		<script id="bg" data-url="{{ asset('img/splashBG4.jpg') }}"></script>
+		<script id="bg" data-url="{{ asset('img/winnerBG.PNG') }}"></script>
 	</body>
 	</html>
