@@ -209,11 +209,6 @@ var pickName = function() {
     var width = choices.width()
     var id = choices.data('ref')
     var name = choices.text()
-    var winners = $('#winners').text()
-    if (winners == '')
-      $('#winners').text(name)
-    else
-      $('#winners').text(`${name}, ${winners}`)
     confetti({
       particleCount: 150,
       spread: 200
