@@ -102,20 +102,16 @@ body {
   position: relative;
 }
 
-.header {
+.header, .header > span {
   width: 100%;
+  white-space: nowrap;
 }
 
 .header > span {
   font-family: 'Verdana';
   color: whitesmoke;
   font-size: 20px;
-  margin-left: 20px;
   line-height: 50px;
-}
-
-.header > span {
-  color: white;
 }
 
 .author {

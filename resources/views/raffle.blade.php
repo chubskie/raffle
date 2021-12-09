@@ -22,13 +22,14 @@
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
-				/*overflow:hidden !important;*/
+				overflow-x :hidden;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="header">
-			<span>Participants: <span id="participant-number"></span></span>
+		<div class="header" style="overflow-x:auto; margin-bottom:15px">
+			<span style="margin-left:15px">Participants: <span id="participant-number"></span></span>
+			<span style="margin-left:25px">Previous Winners: <span id="winners"></span></span>
 		</div>
 		<div class="wrapper"></div>
 		<script src="{{ asset('js/app.js') }}"></script>
@@ -39,7 +40,13 @@
 		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 		<script>
 			var imported = @json($guests);
-			console.log({{ count($guests) }});
+			var winners = @json($winners);
+			var names = [];
+			if (winners.length > 0) {
+				for (winner of winners)
+					names.push(winner.name);
+				$('#winners').append(names.join(', '));
+			}
 			$('.enter-names').hide();
 			makeTicketsWithPoints();
 		</script>

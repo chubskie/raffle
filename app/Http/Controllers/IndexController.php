@@ -16,8 +16,10 @@ class IndexController extends Controller {
 
 	public function raffle() {
 		$guests = Guest::whereNull('raffle')->inRandomOrder()->get();
+		$winners = Guest::whereNotNull('raffle')->orderBy('updated_at', 'desc')->get();
 		return view('raffle', [
 			'guests' => $guests,
+			'winners' => $winners
 		]);
 	}
 }
