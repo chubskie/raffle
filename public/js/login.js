@@ -32,7 +32,8 @@ $(function() {
 						window.location.href = $('#loginjs').data('url');
 					});
 				} else {
-					$('input').val().removeAttr('readonly');
+					$('input').val();
+					$('input').removeAttr('readonly');
 					$('button').removeAttr('disabled');
 					$('#message').text(response.msg);
 					$('input').val('');
