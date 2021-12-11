@@ -222,7 +222,7 @@ var pickName = function() {
       `,
       customClass: 'swal2-modal-md',
       showConfirmButton: false,
-      background: 'black',
+      background: 'transparent',
       // backdrop: 'url(../tykraffle/img/221513.jpg) 45% 10%/ 90% 100% no-repeat',
       backdrop: 'url(' + $('#bg').data('url') + ') center/ contain no-repeat, black',
       allowOutsideClick: false
