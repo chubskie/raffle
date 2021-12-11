@@ -109,15 +109,15 @@ body {
 
 .header input[type="number"] {
   width: 20px;
-  height: 25px;
-  font-size: 10px;
+  height: 10px;
+  font-size: 6px;
   color: whitesmoke;
 }
 
 .header > span {
   font-family: 'Verdana';
   color: whitesmoke;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 20px;
 }
 
