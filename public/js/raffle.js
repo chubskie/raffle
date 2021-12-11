@@ -10,17 +10,16 @@ var excluded = ['2OMMIGXFGD']
 var colors = ['#eb042c', '#fc5060', '#aa1924', '#f40404', '#ee3e38', '#ff0404']
 var transitionColor = ['#ff8d06', '#d91400', '#d1183e']
 /**
- * Raffle
- * 2012
- * https://github.com/stringham/raffle
- * Copyright Ryan Stringham
- */
+* Raffle
+* 2012
+* https://github.com/stringham/raffle
+* Copyright Ryan Stringham
+*/
 
- var inProgress = false
- var size = 8
- var speed
+var inProgress = false
+var size = 8
 
- function getRandomColor(color) {
+function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
 }
 

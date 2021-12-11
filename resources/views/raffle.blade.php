@@ -29,7 +29,7 @@
 	<body>
 		<div class="header" style="overflow-x:auto;">
 			<span style="margin-left:15px">Participants: <span id="participant-number"></span></span>
-			<span style="margin-left:25px">Speed: <input type="number" id="speed" min="1" max="3" value="1">seconds</span>
+			<span style="font-size:10px; position:sticky; left:100vw; margin-right:10px">Speed: <input type="number" id="speed" min="1" max="3" value="1"></span>
 		</div>
 		<div class="wrapper"></div>
 		<script src="{{ asset('js/app.js') }}"></script>
