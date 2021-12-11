@@ -107,11 +107,17 @@ body {
   white-space: nowrap;
 }
 
+.header input[type="number"] {
+  width: 50px;
+  height: 35px;
+  color: whitesmoke;
+}
+
 .header > span {
   font-family: 'Verdana';
   color: whitesmoke;
-  font-size: 20px;
-  line-height: 50px;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .author {

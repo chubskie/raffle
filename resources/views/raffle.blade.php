@@ -27,8 +27,9 @@
 		</style>
 	</head>
 	<body>
-		<div class="header" style="overflow-x:auto; margin-bottom:15px">
+		<div class="header" style="overflow-x:auto;">
 			<span style="margin-left:15px">Participants: <span id="participant-number"></span></span>
+			<span style="margin-left:25px">Speed: <input type="number" id="speed" min="1" max="3" value="1">seconds</span>
 		</div>
 		<div class="wrapper"></div>
 		<script src="{{ asset('js/app.js') }}"></script>

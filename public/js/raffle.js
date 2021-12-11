@@ -18,6 +18,7 @@ var transitionColor = ['#ff8d06', '#d91400', '#d1183e']
 
  var inProgress = false
  var size = 8
+ var speed
 
  function getRandomColor(color) {
   return color[Math.floor(Math.random() * color.length)]
@@ -68,6 +69,7 @@ function Ticket(name, ref) {
   this.decrement = function(length, callback) {
     var me = this
     this.points--
+    let speed = $('#speed').val() * 1000;
     if (this.points == 0) {
       var directions = ['up', 'down', 'left', 'right']
       this.dom
@@ -75,7 +77,7 @@ function Ticket(name, ref) {
       .hide(
         'drop',
         { direction: directions[length % directions.length] },
-        length <= 3 ? 750 : 1000 / length,
+        length <= 3 ? speed - 250 : speed / length,
         function() {
          callback();
        }
@@ -87,7 +89,7 @@ function Ticket(name, ref) {
       })
       setTimeout(function() {
         callback()
-      }, length == 2 ? 1000 : 1000 / length)
+      }, length == 2 ? speed : speed / length)
     }
   }
 }
