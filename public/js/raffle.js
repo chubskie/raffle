@@ -68,7 +68,15 @@ function Ticket(name, ref) {
   this.decrement = function(length, callback) {
     var me = this
     this.points--
-    let speed = $('#speed').val() * 1000;
+    let speed = $('#speed').val();
+    if (speed == '')
+      speed = 1000;
+    else if (speed < 1)
+      speed = 1000;
+    else if (speed > 3)
+      speed = 3000;
+    else
+      speed = speed * 1000;
     if (this.points == 0) {
       var directions = ['up', 'down', 'left', 'right']
       this.dom
