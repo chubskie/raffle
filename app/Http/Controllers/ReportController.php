@@ -12,9 +12,9 @@ use App\Exports\GuestsExport;
 class ReportController extends Controller
 {
 	public function export() {
-		$timestamp = Carbon::now();
+		$timestamp = Carbon::now()->isoFormat('MMMM D, YYYY - h:mm a');
 
-		return Excel::download(new GuestsExport, 'EMC Likharaya 2019 Data - ' . $timestamp . '.xlsx');
+		return Excel::download(new GuestsExport, 'Alumni Homecoming Raffle 2021 Data - ' . $timestamp . '.xlsx');
 	}
 
 	public function import(Request $request) {

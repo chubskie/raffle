@@ -1,51 +1,44 @@
 <table>
 	<thead>
 		<tr>
-			<th>Student Number</th>
+			<th>ID</th>
 			<th>Name</th>
-			<th>College</th>
-			<th>Year Level</th>
-			<th>Course</th>
-			<th>Contact Number</th>
 			<th>Time Registered</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($guests as $guest)
+		<tr></tr>
 		<tr>
-			<td>{{ $guest->student_number }}</td>
-			<td>{{ $guest->last_name }}, {{ $guest->first_name }} @if($guest->middle_initial != null) {{ $guest->middle_initial }} @endif</td>
-			<td>
-				@if ($guest->college == 'law')
-				College of Law
-				@elseif ($guest->college == 'dent')
-				College of Dentistry
-				@elseif ($guest->college == 'cas')
-				College of Arts and Sciences
-				@elseif ($guest->college == 'cba')
-				College of Business Administration
-				@elseif ($guest->college == 'eng')
-				College of Engineering
-				@elseif ($guest->college == 'ccss')
-				College of Computer Studies and Systems
-				@elseif ($guest->college == 'educ')
-				College of Education
-				@elseif ($guest->college == 'cfad')
-				College of Fine Arts, Architecture, and Design
-				@else
-				No College Available
-				@endif
-			</td>
-			<td>{{ $guest->year_level }}</td>
-			<td>{{ $guest->course }}</td>
-			<td>{{ $guest->contact_number }}</td>
-			<td>{{ \Carbon\Carbon::parse($guest->created_at, 'UTC')->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
+			<td colspan="3">RAFFLE WINNERS</td>
 		</tr>
+		@foreach ($guests as $guest)
+		@if ($guest->raffle == true)
+		<tr>
+			<td>{{ $guest->id }}</td>
+			<td>{{ $guest->name }}</td>
+			<td>{{ \Carbon\Carbon::parse($guest->updated_at)->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
+		</tr>
+		@endif
+		@endforeach
+
+		<tr></tr>
+		<tr></tr>
+		<tr>
+			<td colspan="3">RAFFLE REGISTERS</td>
+		</tr>
+		@foreach ($guests as $guest)
+		@if ($guest->raffle == false)
+		<tr>
+			<td>{{ $guest->id }}</td>
+			<td>{{ $guest->name }}</td>
+			<td>{{ \Carbon\Carbon::parse($guest->created_at)->isoFormat('MMMM D, YYYY - h:mm a') }}</td>
+		</tr>
+		@endif
 		@endforeach
 		<tr></tr>
 		<tr></tr>
 		<tr>
-			<td>Retrieved from CCSS RnD EMC Likharaya 2019 System</td>
+			<td>Retrieved from UE-CCSS RnD Unit Raffle System</td>
 		</tr>
 		<tr>
 			<td>{{ $timestamp }}</td>

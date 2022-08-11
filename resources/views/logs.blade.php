@@ -12,19 +12,21 @@
 					<div class="col">
 						<a href="raffle" id="raffle" class="btn btn-flat waves-effect waves-blue" title="Launch Raffle">
 							<i class="fas fa-ticket-alt"></i>
-							<span>Raffle</span>
 						</a>
 					</div>
 					<div class="col">
 						<button id="import" class="btn btn-flat waves-effect waves-blue" title="Import Excel File">
 							<i class="fas fa-file-import"></i>
-							<span>Import</span>
 						</button>
+					</div>
+					<div class="col">
+						<a href="export" target="_blank" id="export" class="btn btn-flat waves-effect waves-blue" title="Export Excel File">
+							<i class="fas fa-file-export"></i>
+						</a>
 					</div>
 					<div class="col">
 						<button id="clear" class="btn btn-flat waves-effect waves-red" title="Clear Guests List">
 							<i class="fas fa-user-slash"></i>
-							<span>Clear Guests</span>
 						</button>
 					</div>
 					<div class="col">
@@ -32,7 +34,6 @@
 							@csrf
 							<button class="btn btn-flat waves-effect waves-red">
 								<i class="fas fa-sign-out-alt pr-1"></i>
-								<span>Sign Out</span>
 							</button>
 						</form>
 					</div>
